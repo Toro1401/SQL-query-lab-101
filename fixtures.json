@@ -1,0 +1,6939 @@
+{
+  "I-01": {
+    "id": "I-01",
+    "title": "Shopping Carts",
+    "inputs": [
+      {
+        "headers": [
+          "item"
+        ],
+        "rows": [
+          [
+            "Sugar"
+          ],
+          [
+            "Bread"
+          ],
+          [
+            "Juice"
+          ],
+          [
+            "Soda"
+          ],
+          [
+            "Flour"
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "item"
+        ],
+        "rows": [
+          [
+            "Sugar"
+          ],
+          [
+            "Bread"
+          ],
+          [
+            "Butter"
+          ],
+          [
+            "Cheese"
+          ],
+          [
+            "Fruit"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Sugar",
+          "Sugar"
+        ],
+        [
+          "Bread",
+          "Bread"
+        ],
+        [
+          "Juice",
+          null
+        ],
+        [
+          "Soda",
+          null
+        ],
+        [
+          "Flour",
+          null
+        ],
+        [
+          null,
+          "Butter"
+        ],
+        [
+          null,
+          "Cheese"
+        ],
+        [
+          null,
+          "Fruit"
+        ]
+      ]
+    ]
+  },
+  "I-02": {
+    "id": "I-02",
+    "title": "Managers and Employees",
+    "inputs": [
+      {
+        "headers": [
+          "employee_id",
+          "manager_id",
+          "job_title"
+        ],
+        "rows": [
+          [
+            1001,
+            null,
+            "CEO"
+          ],
+          [
+            2002,
+            1001,
+            "Director"
+          ],
+          [
+            3003,
+            1001,
+            "Office Manager"
+          ],
+          [
+            4004,
+            2002,
+            "Engineer"
+          ],
+          [
+            5005,
+            2002,
+            "Engineer"
+          ],
+          [
+            6006,
+            2002,
+            "Engineer"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          null,
+          "CEO",
+          0
+        ],
+        [
+          2002,
+          1001,
+          "Director",
+          1
+        ],
+        [
+          3003,
+          1001,
+          "Office Manager",
+          1
+        ],
+        [
+          4004,
+          2002,
+          "Engineer",
+          2
+        ],
+        [
+          5005,
+          2002,
+          "Engineer",
+          2
+        ],
+        [
+          6006,
+          2002,
+          "Engineer",
+          2
+        ]
+      ]
+    ]
+  },
+  "I-03": {
+    "id": "I-03",
+    "title": "Fiscal Year Table Constraints",
+    "inputs": [],
+    "expected": []
+  },
+  "I-04": {
+    "id": "I-04",
+    "title": "Two Predicates",
+    "inputs": [
+      {
+        "headers": [
+          "customer_id",
+          "order_id",
+          "delivery_state",
+          "amount"
+        ],
+        "rows": [
+          [
+            1001,
+            1,
+            "CA",
+            340
+          ],
+          [
+            1001,
+            2,
+            "TX",
+            950
+          ],
+          [
+            1001,
+            3,
+            "TX",
+            670
+          ],
+          [
+            1001,
+            4,
+            "TX",
+            860
+          ],
+          [
+            2002,
+            5,
+            "WA",
+            320
+          ],
+          [
+            3003,
+            6,
+            "CA",
+            650
+          ],
+          [
+            3003,
+            7,
+            "CA",
+            830
+          ],
+          [
+            4004,
+            8,
+            "TX",
+            120
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          2,
+          "TX",
+          950
+        ],
+        [
+          1001,
+          3,
+          "TX",
+          670
+        ],
+        [
+          1001,
+          4,
+          "TX",
+          860
+        ]
+      ]
+    ]
+  },
+  "I-05": {
+    "id": "I-05",
+    "title": "Phone Directory",
+    "inputs": [
+      {
+        "headers": [
+          "customer_id",
+          "type",
+          "phone_number"
+        ],
+        "rows": [
+          [
+            1001,
+            "Cellular",
+            "555-897-5421"
+          ],
+          [
+            1001,
+            "Work",
+            "555-897-6542"
+          ],
+          [
+            1001,
+            "Home",
+            "555-698-9874"
+          ],
+          [
+            2002,
+            "Cellular",
+            "555-963-6544"
+          ],
+          [
+            2002,
+            "Work",
+            "555-812-9856"
+          ],
+          [
+            3003,
+            "Cellular",
+            "555-987-6541"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          "555-897-5421",
+          "555-897-6542",
+          "555-698-9874"
+        ],
+        [
+          2002,
+          "555-963-6544",
+          "555-812-9856",
+          null
+        ],
+        [
+          3003,
+          "555-987-6541",
+          null,
+          null
+        ]
+      ]
+    ]
+  },
+  "I-06": {
+    "id": "I-06",
+    "title": "Workflow Steps",
+    "inputs": [
+      {
+        "headers": [
+          "workflow",
+          "step_number",
+          "completion_date"
+        ],
+        "rows": [
+          [
+            "Alpha",
+            1,
+            "2018-07-02"
+          ],
+          [
+            "Alpha",
+            2,
+            "2018-07-02"
+          ],
+          [
+            "Alpha",
+            3,
+            "2018-07-01"
+          ],
+          [
+            "Bravo",
+            1,
+            "2018-06-25"
+          ],
+          [
+            "Bravo",
+            2,
+            null
+          ],
+          [
+            "Bravo",
+            3,
+            "2018-06-27"
+          ],
+          [
+            "Charlie",
+            1,
+            null
+          ],
+          [
+            "Charlie",
+            2,
+            "2018-07-01"
+          ],
+          [
+            "Charlie",
+            2,
+            "2018-07-01"
+          ],
+          [
+            "Delta",
+            1,
+            null
+          ],
+          [
+            "Delta",
+            2,
+            null
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Bravo"
+        ],
+        [
+          "Charlie"
+        ]
+      ]
+    ]
+  },
+  "I-07": {
+    "id": "I-07",
+    "title": "Mission to Mars",
+    "inputs": [
+      {
+        "headers": [
+          "candidate_id",
+          "description"
+        ],
+        "rows": [
+          [
+            1001,
+            "Geologist"
+          ],
+          [
+            1001,
+            "Astrogator"
+          ],
+          [
+            1001,
+            "Biochemist"
+          ],
+          [
+            1001,
+            "Technician"
+          ],
+          [
+            2002,
+            "Surgeon"
+          ],
+          [
+            2002,
+            "Machinist"
+          ],
+          [
+            2002,
+            "Geologist"
+          ],
+          [
+            3003,
+            "Geologist"
+          ],
+          [
+            3003,
+            "Astrogator"
+          ],
+          [
+            4004,
+            "Selenologist"
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "description"
+        ],
+        "rows": [
+          [
+            "Geologist"
+          ],
+          [
+            "Astrogator"
+          ],
+          [
+            "Technician"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001
+        ]
+      ]
+    ]
+  },
+  "I-08": {
+    "id": "I-08",
+    "title": "Workflow Cases",
+    "inputs": [
+      {
+        "headers": [
+          "workflow",
+          "case_1",
+          "case_2",
+          "case_3"
+        ],
+        "rows": [
+          [
+            "Alpha",
+            0,
+            0,
+            0
+          ],
+          [
+            "Bravo",
+            0,
+            1,
+            1
+          ],
+          [
+            "Charlie",
+            1,
+            0,
+            0
+          ],
+          [
+            "Delta",
+            0,
+            0,
+            0
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Alpha",
+          0
+        ],
+        [
+          "Bravo",
+          2
+        ],
+        [
+          "Charlie",
+          1
+        ],
+        [
+          "Delta",
+          0
+        ]
+      ]
+    ]
+  },
+  "I-09": {
+    "id": "I-09",
+    "title": "Matching Sets",
+    "inputs": [
+      {
+        "headers": [
+          "employee_id",
+          "license"
+        ],
+        "rows": [
+          [
+            1001,
+            "Class A"
+          ],
+          [
+            1001,
+            "Class B"
+          ],
+          [
+            1001,
+            "Class C"
+          ],
+          [
+            2002,
+            "Class A"
+          ],
+          [
+            2002,
+            "Class B"
+          ],
+          [
+            2002,
+            "Class C"
+          ],
+          [
+            3003,
+            "Class A"
+          ],
+          [
+            3003,
+            "Class D"
+          ],
+          [
+            4004,
+            "Class A"
+          ],
+          [
+            4004,
+            "Class B"
+          ],
+          [
+            4004,
+            "Class D"
+          ],
+          [
+            5005,
+            "Class A"
+          ],
+          [
+            5005,
+            "Class B"
+          ],
+          [
+            5005,
+            "Class D"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          2002,
+          3
+        ],
+        [
+          2002,
+          1001,
+          3
+        ],
+        [
+          4004,
+          5005,
+          3
+        ],
+        [
+          5005,
+          4004,
+          3
+        ]
+      ]
+    ]
+  },
+  "I-10": {
+    "id": "I-10",
+    "title": "Mean, Median, Mode, and Range",
+    "inputs": [
+      {
+        "headers": [
+          "integer_value"
+        ],
+        "rows": [
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            10
+          ],
+          [
+            10
+          ],
+          [
+            13
+          ],
+          [
+            14
+          ],
+          [
+            17
+          ],
+          [
+            20
+          ],
+          [
+            81
+          ],
+          [
+            90
+          ],
+          [
+            76
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "I-11": {
+    "id": "I-11",
+    "title": "Permutations",
+    "inputs": [
+      {
+        "headers": [
+          "test_case"
+        ],
+        "rows": [
+          [
+            "A"
+          ],
+          [
+            "B"
+          ],
+          [
+            "C"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "A,B,C"
+        ],
+        [
+          "A,C,B"
+        ],
+        [
+          "B,A,C"
+        ],
+        [
+          "B,C,A"
+        ],
+        [
+          "C,A,B"
+        ],
+        [
+          "C,B,A"
+        ]
+      ]
+    ]
+  },
+  "I-12": {
+    "id": "I-12",
+    "title": "Average Days",
+    "inputs": [
+      {
+        "headers": [
+          "workflow",
+          "execution_date"
+        ],
+        "rows": [
+          [
+            "Alpha",
+            "2018-06-01"
+          ],
+          [
+            "Alpha",
+            "2018-06-14"
+          ],
+          [
+            "Alpha",
+            "2018-06-15"
+          ],
+          [
+            "Bravo",
+            "2018-06-01"
+          ],
+          [
+            "Bravo",
+            "2018-06-02"
+          ],
+          [
+            "Bravo",
+            "2018-06-19"
+          ],
+          [
+            "Charlie",
+            "2018-06-01"
+          ],
+          [
+            "Charlie",
+            "2018-06-15"
+          ],
+          [
+            "Charlie",
+            "2018-06-30"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Alpha",
+          7
+        ],
+        [
+          "Bravo",
+          9
+        ],
+        [
+          "Charlie",
+          14
+        ]
+      ]
+    ]
+  },
+  "I-13": {
+    "id": "I-13",
+    "title": "Inventory Tracking",
+    "inputs": [
+      {
+        "headers": [
+          "date",
+          "quantity_adjustment"
+        ],
+        "rows": [
+          [
+            "2018-07-01",
+            100
+          ],
+          [
+            "2018-07-02",
+            75
+          ],
+          [
+            "2018-07-03",
+            -150
+          ],
+          [
+            "2018-07-04",
+            50
+          ],
+          [
+            "2018-07-05",
+            -100
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "2018-07-01",
+          100,
+          100
+        ],
+        [
+          "2018-07-02",
+          75,
+          175
+        ],
+        [
+          "2018-07-03",
+          -150,
+          25
+        ],
+        [
+          "2018-07-04",
+          50,
+          75
+        ],
+        [
+          "2018-07-05",
+          -100,
+          -25
+        ]
+      ]
+    ]
+  },
+  "I-14": {
+    "id": "I-14",
+    "title": "Indeterminate Process Log",
+    "inputs": [
+      {
+        "headers": [
+          "workflow",
+          "step_number",
+          "status"
+        ],
+        "rows": [
+          [
+            "Alpha",
+            1,
+            "Error"
+          ],
+          [
+            "Alpha",
+            2,
+            "Complete"
+          ],
+          [
+            "Alpha",
+            3,
+            "Running"
+          ],
+          [
+            "Bravo",
+            1,
+            "Complete"
+          ],
+          [
+            "Bravo",
+            2,
+            "Complete"
+          ],
+          [
+            "Charlie",
+            1,
+            "Running"
+          ],
+          [
+            "Charlie",
+            2,
+            "Running"
+          ],
+          [
+            "Delta",
+            1,
+            "Error"
+          ],
+          [
+            "Delta",
+            2,
+            "Error"
+          ],
+          [
+            "Echo",
+            1,
+            "Running"
+          ],
+          [
+            "Echo",
+            2,
+            "Complete"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Alpha",
+          "Indeterminate"
+        ],
+        [
+          "Bravo",
+          "Complete"
+        ],
+        [
+          "Charlie",
+          "Running"
+        ],
+        [
+          "Delta",
+          "Error"
+        ],
+        [
+          "Echo",
+          "Running"
+        ]
+      ]
+    ]
+  },
+  "I-15": {
+    "id": "I-15",
+    "title": "Group Concatenation",
+    "inputs": [
+      {
+        "headers": [
+          "sequence",
+          "syntax"
+        ],
+        "rows": [
+          [
+            1,
+            "SELECT"
+          ],
+          [
+            2,
+            "Product,"
+          ],
+          [
+            3,
+            "UnitPrice,"
+          ],
+          [
+            4,
+            "EffectiveDate"
+          ],
+          [
+            5,
+            "FROM"
+          ],
+          [
+            6,
+            "Products"
+          ],
+          [
+            7,
+            "WHERE"
+          ],
+          [
+            8,
+            "UnitPrice"
+          ],
+          [
+            9,
+            "> 100"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "SELECT Product, UnitPrice, EffectiveDate FROM Products WHERE UnitPrice > 100"
+        ]
+      ]
+    ]
+  },
+  "I-16": {
+    "id": "I-16",
+    "title": "Reciprocals",
+    "inputs": [
+      {
+        "headers": [
+          "player_a",
+          "player_b",
+          "score"
+        ],
+        "rows": [
+          [
+            1001,
+            2002,
+            150
+          ],
+          [
+            3003,
+            4004,
+            15
+          ],
+          [
+            4004,
+            3003,
+            125
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          2002,
+          150
+        ],
+        [
+          3003,
+          4004,
+          140
+        ]
+      ]
+    ]
+  },
+  "I-17": {
+    "id": "I-17",
+    "title": "De-Grouping",
+    "inputs": [
+      {
+        "headers": [
+          "product",
+          "quantity"
+        ],
+        "rows": [
+          [
+            "Pencil",
+            3
+          ],
+          [
+            "Eraser",
+            4
+          ],
+          [
+            "Notebook",
+            2
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Pencil",
+          1
+        ],
+        [
+          "Pencil",
+          1
+        ],
+        [
+          "Pencil",
+          1
+        ],
+        [
+          "Eraser",
+          1
+        ],
+        [
+          "Eraser",
+          1
+        ],
+        [
+          "Eraser",
+          1
+        ],
+        [
+          "Eraser",
+          1
+        ],
+        [
+          "Notebook",
+          1
+        ],
+        [
+          "Notebook",
+          1
+        ]
+      ]
+    ]
+  },
+  "I-18": {
+    "id": "I-18",
+    "title": "Seating Chart",
+    "inputs": [
+      {
+        "headers": [
+          "seat_number"
+        ],
+        "rows": [
+          [
+            7
+          ],
+          [
+            13
+          ],
+          [
+            14
+          ],
+          [
+            15
+          ],
+          [
+            27
+          ],
+          [
+            28
+          ],
+          [
+            29
+          ],
+          [
+            30
+          ],
+          [
+            31
+          ],
+          [
+            32
+          ],
+          [
+            33
+          ],
+          [
+            34
+          ],
+          [
+            35
+          ],
+          [
+            52
+          ],
+          [
+            53
+          ],
+          [
+            54
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          16,
+          26
+        ],
+        [
+          36,
+          51
+        ]
+      ],
+      [
+        [
+          38
+        ]
+      ],
+      [
+        [
+          "Even Numbers",
+          7
+        ],
+        [
+          "Odd Numbers",
+          9
+        ]
+      ]
+    ]
+  },
+  "I-19": {
+    "id": "I-19",
+    "title": "Back to the Future",
+    "inputs": [
+      {
+        "headers": [
+          "start_date",
+          "end_date"
+        ],
+        "rows": [
+          [
+            "2018-01-01",
+            "2018-01-05"
+          ],
+          [
+            "2018-01-03",
+            "2018-01-09"
+          ],
+          [
+            "2018-01-10",
+            "2018-01-11"
+          ],
+          [
+            "2018-01-12",
+            "2018-01-16"
+          ],
+          [
+            "2018-01-15",
+            "2018-01-19"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "2018-01-01",
+          "2018-01-09"
+        ],
+        [
+          "2018-01-10",
+          "2018-01-11"
+        ],
+        [
+          "2018-01-12",
+          "2018-01-19"
+        ]
+      ]
+    ]
+  },
+  "I-20": {
+    "id": "I-20",
+    "title": "Price Points",
+    "inputs": [
+      {
+        "headers": [
+          "product_id",
+          "effective_date",
+          "unit_price"
+        ],
+        "rows": [
+          [
+            1001,
+            "2018-01-01",
+            1.99
+          ],
+          [
+            1001,
+            "2018-04-15",
+            2.99
+          ],
+          [
+            1001,
+            "2018-06-08",
+            3.99
+          ],
+          [
+            2002,
+            "2018-04-17",
+            1.99
+          ],
+          [
+            2002,
+            "2018-05-19",
+            2.99
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          "2018-06-08",
+          3.99
+        ],
+        [
+          2002,
+          "2018-05-19",
+          2.99
+        ]
+      ]
+    ]
+  },
+  "I-21": {
+    "id": "I-21",
+    "title": "Average Monthly Sales",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "customer_id",
+          "order_date",
+          "amount",
+          "state"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            "2018-01-01",
+            100,
+            "TX"
+          ],
+          [
+            2,
+            1001,
+            "2018-01-01",
+            150,
+            "TX"
+          ],
+          [
+            3,
+            1001,
+            "2018-01-01",
+            75,
+            "TX"
+          ],
+          [
+            4,
+            1001,
+            "2018-02-01",
+            100,
+            "TX"
+          ],
+          [
+            5,
+            1001,
+            "2018-03-01",
+            100,
+            "TX"
+          ],
+          [
+            6,
+            2002,
+            "2018-02-01",
+            75,
+            "TX"
+          ],
+          [
+            7,
+            2002,
+            "2018-02-01",
+            150,
+            "TX"
+          ],
+          [
+            8,
+            3003,
+            "2018-01-01",
+            100,
+            "IA"
+          ],
+          [
+            9,
+            3003,
+            "2018-02-01",
+            100,
+            "IA"
+          ],
+          [
+            10,
+            3003,
+            "2018-03-01",
+            100,
+            "IA"
+          ],
+          [
+            11,
+            4004,
+            "2018-04-01",
+            100,
+            "IA"
+          ],
+          [
+            12,
+            4004,
+            "2018-05-01",
+            50,
+            "IA"
+          ],
+          [
+            13,
+            4004,
+            "2018-05-01",
+            100,
+            "IA"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "TX"
+        ]
+      ]
+    ]
+  },
+  "I-22": {
+    "id": "I-22",
+    "title": "Occurrences",
+    "inputs": [
+      {
+        "headers": [
+          "workflow",
+          "message",
+          "occurrences"
+        ],
+        "rows": [
+          [
+            "Bravo",
+            "Error: Cannot Divide by 0",
+            3
+          ],
+          [
+            "Alpha",
+            "Error: Conversion Failed",
+            5
+          ],
+          [
+            "Charlie",
+            "Error: Conversion Failed",
+            7
+          ],
+          [
+            "Alpha",
+            "Error: Unidentified error occurred",
+            9
+          ],
+          [
+            "Bravo",
+            "Error: Unidentified error occurred",
+            1
+          ],
+          [
+            "Charlie",
+            "Error: Unidentified error occurred",
+            10
+          ],
+          [
+            "Alpha",
+            "Status Complete",
+            8
+          ],
+          [
+            "Charlie",
+            "Status Complete",
+            6
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Bravo",
+          "Error: Cannot Divide by 0",
+          3
+        ],
+        [
+          "Charlie",
+          "Error: Conversion Failed",
+          7
+        ],
+        [
+          "Charlie",
+          "Error: Unidentified error occurred",
+          10
+        ],
+        [
+          "Alpha",
+          "Status Complete",
+          8
+        ]
+      ]
+    ]
+  },
+  "I-23": {
+    "id": "I-23",
+    "title": "Divide in Half",
+    "inputs": [
+      {
+        "headers": [
+          "player_id",
+          "score"
+        ],
+        "rows": [
+          [
+            1001,
+            2343
+          ],
+          [
+            2002,
+            9432
+          ],
+          [
+            3003,
+            6548
+          ],
+          [
+            4004,
+            1054
+          ],
+          [
+            5005,
+            6832
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          2002,
+          9432
+        ],
+        [
+          1,
+          3003,
+          6548
+        ],
+        [
+          1,
+          5005,
+          6832
+        ],
+        [
+          2,
+          1001,
+          2343
+        ],
+        [
+          2,
+          4004,
+          1054
+        ]
+      ]
+    ]
+  },
+  "I-24": {
+    "id": "I-24",
+    "title": "Page Views",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "customer_id",
+          "order_date",
+          "amount",
+          "state"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            "2018-01-01",
+            100,
+            "TX"
+          ],
+          [
+            2,
+            3003,
+            "2018-01-01",
+            100,
+            "IA"
+          ],
+          [
+            3,
+            1001,
+            "2018-03-01",
+            100,
+            "TX"
+          ],
+          [
+            4,
+            2002,
+            "2018-02-01",
+            150,
+            "TX"
+          ],
+          [
+            5,
+            1001,
+            "2018-02-01",
+            100,
+            "TX"
+          ],
+          [
+            6,
+            4004,
+            "2018-05-01",
+            50,
+            "IA"
+          ],
+          [
+            7,
+            1001,
+            "2018-01-01",
+            150,
+            "TX"
+          ],
+          [
+            8,
+            3003,
+            "2018-03-01",
+            100,
+            "IA"
+          ],
+          [
+            9,
+            4004,
+            "2018-04-01",
+            100,
+            "IA"
+          ],
+          [
+            10,
+            1001,
+            "2018-01-01",
+            75,
+            "TX"
+          ],
+          [
+            11,
+            2002,
+            "2018-02-01",
+            75,
+            "TX"
+          ],
+          [
+            12,
+            3003,
+            "2018-02-01",
+            100,
+            "IA"
+          ],
+          [
+            13,
+            4004,
+            "2018-05-01",
+            100,
+            "IA"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          5,
+          1001,
+          "2018-02-01",
+          100,
+          "TX"
+        ],
+        [
+          6,
+          4004,
+          "2018-05-01",
+          50,
+          "IA"
+        ],
+        [
+          7,
+          1001,
+          "2018-01-01",
+          150,
+          "TX"
+        ],
+        [
+          8,
+          3003,
+          "2018-03-01",
+          100,
+          "IA"
+        ],
+        [
+          9,
+          4004,
+          "2018-04-01",
+          100,
+          "IA"
+        ],
+        [
+          10,
+          1001,
+          "2018-01-01",
+          75,
+          "TX"
+        ]
+      ]
+    ]
+  },
+  "I-25": {
+    "id": "I-25",
+    "title": "Top Vendors",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "customer_id",
+          "count",
+          "vendor"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            35,
+            "Direct Parts"
+          ],
+          [
+            2,
+            1001,
+            35,
+            "Direct Parts"
+          ],
+          [
+            3,
+            1001,
+            50,
+            "ACME"
+          ],
+          [
+            4,
+            2002,
+            10,
+            "ACME"
+          ],
+          [
+            5,
+            2002,
+            10,
+            "ACME"
+          ],
+          [
+            6,
+            2002,
+            15,
+            "Direct Parts"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          "Direct Parts"
+        ],
+        [
+          2002,
+          "ACME"
+        ]
+      ]
+    ]
+  },
+  "I-26": {
+    "id": "I-26",
+    "title": "Previous Year’s Sales",
+    "inputs": [
+      {
+        "headers": [
+          "year",
+          "amount"
+        ],
+        "rows": [
+          [
+            2018,
+            352645
+          ],
+          [
+            2017,
+            165565
+          ],
+          [
+            2017,
+            254654
+          ],
+          [
+            2016,
+            159521
+          ],
+          [
+            2016,
+            251696
+          ],
+          [
+            2016,
+            111894
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          352645,
+          420219,
+          411217
+        ]
+      ]
+    ]
+  },
+  "I-27": {
+    "id": "I-27",
+    "title": "Delete the Duplicates",
+    "inputs": [
+      {
+        "headers": [
+          "integer_value"
+        ],
+        "rows": [
+          [
+            1
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ]
+      ]
+    ]
+  },
+  "I-28": {
+    "id": "I-28",
+    "title": "Fill the Gaps",
+    "inputs": [
+      {
+        "headers": [
+          "row_number",
+          "test_case"
+        ],
+        "rows": [
+          [
+            1,
+            "Alpha"
+          ],
+          [
+            2,
+            null
+          ],
+          [
+            3,
+            null
+          ],
+          [
+            4,
+            null
+          ],
+          [
+            5,
+            "Bravo"
+          ],
+          [
+            6,
+            null
+          ],
+          [
+            7,
+            "Charlie"
+          ],
+          [
+            8,
+            null
+          ],
+          [
+            9,
+            null
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Alpha"
+        ],
+        [
+          2,
+          "Alpha"
+        ],
+        [
+          3,
+          "Alpha"
+        ],
+        [
+          4,
+          "Alpha"
+        ],
+        [
+          5,
+          "Bravo"
+        ],
+        [
+          6,
+          "Bravo"
+        ],
+        [
+          7,
+          "Charlie"
+        ],
+        [
+          8,
+          "Charlie"
+        ],
+        [
+          9,
+          "Charlie"
+        ]
+      ]
+    ]
+  },
+  "I-29": {
+    "id": "I-29",
+    "title": "Count the Groupings",
+    "inputs": [
+      {
+        "headers": [
+          "step_number",
+          "status"
+        ],
+        "rows": [
+          [
+            1,
+            "Passed"
+          ],
+          [
+            2,
+            "Passed"
+          ],
+          [
+            3,
+            "Passed"
+          ],
+          [
+            4,
+            "Passed"
+          ],
+          [
+            5,
+            "Failed"
+          ],
+          [
+            6,
+            "Failed"
+          ],
+          [
+            7,
+            "Failed"
+          ],
+          [
+            8,
+            "Failed"
+          ],
+          [
+            9,
+            "Failed"
+          ],
+          [
+            10,
+            "Passed"
+          ],
+          [
+            11,
+            "Passed"
+          ],
+          [
+            12,
+            "Passed"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          4,
+          "Passed",
+          4
+        ],
+        [
+          5,
+          9,
+          "Failed",
+          5
+        ],
+        [
+          10,
+          12,
+          "Passed",
+          3
+        ]
+      ]
+    ]
+  },
+  "I-30": {
+    "id": "I-30",
+    "title": "Select Star",
+    "inputs": [],
+    "expected": []
+  },
+  "I-31": {
+    "id": "I-31",
+    "title": "Second Highest",
+    "inputs": [
+      {
+        "headers": [
+          "integer_value"
+        ],
+        "rows": [
+          [
+            3759
+          ],
+          [
+            3760
+          ],
+          [
+            3761
+          ],
+          [
+            3762
+          ],
+          [
+            3763
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "name",
+          "salary"
+        ],
+        "rows": [
+          [
+            "Carl Friedrich Gauss",
+            250000
+          ],
+          [
+            "Evariste Galois",
+            250000
+          ],
+          [
+            "Pierre-Simon Laplace",
+            150000
+          ],
+          [
+            "Sophie Germain",
+            150000
+          ],
+          [
+            "Leonhard Euler",
+            100000
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          3762
+        ]
+      ]
+    ]
+  },
+  "I-32": {
+    "id": "I-32",
+    "title": "First and Last",
+    "inputs": [
+      {
+        "headers": [
+          "spaceman_id",
+          "job_description",
+          "mission_count"
+        ],
+        "rows": [
+          [
+            1001,
+            "Astrogator",
+            6
+          ],
+          [
+            2002,
+            "Astrogator",
+            12
+          ],
+          [
+            3003,
+            "Astrogator",
+            17
+          ],
+          [
+            4004,
+            "Geologist",
+            21
+          ],
+          [
+            5005,
+            "Geologist",
+            9
+          ],
+          [
+            6006,
+            "Geologist",
+            8
+          ],
+          [
+            7007,
+            "Technician",
+            13
+          ],
+          [
+            8008,
+            "Technician",
+            2
+          ],
+          [
+            9009,
+            "Technician",
+            7
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Astrogator",
+          3003,
+          1001
+        ],
+        [
+          "Geologist",
+          4004,
+          6006
+        ],
+        [
+          "Technician",
+          7007,
+          8008
+        ]
+      ]
+    ]
+  },
+  "I-33": {
+    "id": "I-33",
+    "title": "Deadlines",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "component",
+          "days_to_deliver"
+        ],
+        "rows": [
+          [
+            1,
+            "Aurora",
+            7
+          ],
+          [
+            2,
+            "Twilight",
+            3
+          ],
+          [
+            3,
+            "SunRay",
+            9
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "product",
+          "component",
+          "days_to_manufacture"
+        ],
+        "rows": [
+          [
+            "Aurora",
+            "Photon Coil",
+            7
+          ],
+          [
+            "Aurora",
+            "Filament",
+            2
+          ],
+          [
+            "Aurora",
+            "Shine Capacitor",
+            3
+          ],
+          [
+            "Aurora",
+            "Glow Sphere",
+            1
+          ],
+          [
+            "Twilight",
+            "Photon Coil",
+            7
+          ],
+          [
+            "Twilight",
+            "Filament",
+            2
+          ],
+          [
+            "SunRay",
+            "Shine Capacitor",
+            3
+          ],
+          [
+            "SunRay",
+            "Photon Coil",
+            1
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Aurora",
+          7,
+          7,
+          "On Schedule"
+        ],
+        [
+          2,
+          "Twilight",
+          7,
+          3,
+          "Behind Schedule"
+        ],
+        [
+          3,
+          "SunRay",
+          3,
+          9,
+          "Ahead of Schedule"
+        ]
+      ]
+    ]
+  },
+  "I-34": {
+    "id": "I-34",
+    "title": "Specific Exclusion",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "customer_id",
+          "amount"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            25
+          ],
+          [
+            2,
+            1001,
+            50
+          ],
+          [
+            3,
+            2002,
+            65
+          ],
+          [
+            4,
+            3003,
+            50
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1001,
+          25
+        ],
+        [
+          3,
+          2002,
+          65
+        ],
+        [
+          4,
+          3003,
+          50
+        ]
+      ]
+    ]
+  },
+  "I-35": {
+    "id": "I-35",
+    "title": "International vs. Domestic Sales",
+    "inputs": [
+      {
+        "headers": [
+          "invoice_id",
+          "sales_rep_id",
+          "amount",
+          "sales_type"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            13454,
+            "International"
+          ],
+          [
+            2,
+            2002,
+            3434,
+            "International"
+          ],
+          [
+            3,
+            4004,
+            54645,
+            "International"
+          ],
+          [
+            4,
+            5005,
+            234345,
+            "International"
+          ],
+          [
+            5,
+            1001,
+            4564,
+            "Domestic"
+          ],
+          [
+            6,
+            2002,
+            34534,
+            "Domestic"
+          ],
+          [
+            7,
+            3003,
+            345,
+            "Domestic"
+          ],
+          [
+            8,
+            6006,
+            6543,
+            "Domestic"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          3003
+        ],
+        [
+          4004
+        ],
+        [
+          5005
+        ],
+        [
+          6006
+        ]
+      ]
+    ]
+  },
+  "I-36": {
+    "id": "I-36",
+    "title": "Traveling Salesman",
+    "inputs": [
+      {
+        "headers": [
+          "route_id",
+          "departure_city",
+          "arrival_city",
+          "cost"
+        ],
+        "rows": [
+          [
+            1,
+            "Austin",
+            "Dallas",
+            100
+          ],
+          [
+            2,
+            "Dallas",
+            "Memphis",
+            200
+          ],
+          [
+            3,
+            "Memphis",
+            "Des Moines",
+            300
+          ],
+          [
+            4,
+            "Dallas",
+            "Des Moines",
+            400
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Austin --> Dallas --> Des Moines",
+          500
+        ],
+        [
+          "Austin --> Dallas --> Memphis --> Des Moines",
+          600
+        ]
+      ]
+    ]
+  },
+  "I-37": {
+    "id": "I-37",
+    "title": "Group Criteria Keys",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "distributor",
+          "facility",
+          "zone",
+          "amount"
+        ],
+        "rows": [
+          [
+            1,
+            "ACME",
+            123,
+            "ABC",
+            100
+          ],
+          [
+            2,
+            "ACME",
+            123,
+            "ABC",
+            75
+          ],
+          [
+            3,
+            "Direct Parts",
+            789,
+            "XYZ",
+            150
+          ],
+          [
+            4,
+            "Direct Parts",
+            789,
+            "XYZ",
+            125
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1,
+          "ACME",
+          123,
+          "ABC",
+          100
+        ],
+        [
+          1,
+          2,
+          "ACME",
+          123,
+          "ABC",
+          75
+        ],
+        [
+          2,
+          3,
+          "Direct Parts",
+          789,
+          "XYZ",
+          150
+        ],
+        [
+          2,
+          4,
+          "Direct Parts",
+          789,
+          "XYZ",
+          125
+        ]
+      ]
+    ]
+  },
+  "I-38": {
+    "id": "I-38",
+    "title": "Reporting Elements",
+    "inputs": [
+      {
+        "headers": [
+          "region",
+          "distributor",
+          "sales"
+        ],
+        "rows": [
+          [
+            "North",
+            "ACE",
+            10
+          ],
+          [
+            "South",
+            "ACE",
+            67
+          ],
+          [
+            "East",
+            "ACE",
+            54
+          ],
+          [
+            "North",
+            "ACME",
+            65
+          ],
+          [
+            "South",
+            "ACME",
+            9
+          ],
+          [
+            "East",
+            "ACME",
+            1
+          ],
+          [
+            "West",
+            "ACME",
+            7
+          ],
+          [
+            "North",
+            "Direct Parts",
+            8
+          ],
+          [
+            "South",
+            "Direct Parts",
+            7
+          ],
+          [
+            "West",
+            "Direct Parts",
+            12
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "North",
+          "ACE",
+          10
+        ],
+        [
+          "South",
+          "ACE",
+          67
+        ],
+        [
+          "East",
+          "ACE",
+          54
+        ],
+        [
+          "West",
+          "ACE",
+          0
+        ],
+        [
+          "North",
+          "ACME",
+          65
+        ],
+        [
+          "South",
+          "ACME",
+          9
+        ],
+        [
+          "East",
+          "ACME",
+          1
+        ],
+        [
+          "West",
+          "ACME",
+          7
+        ],
+        [
+          "North",
+          "Direct Parts",
+          8
+        ],
+        [
+          "South",
+          "Direct Parts",
+          7
+        ],
+        [
+          "East",
+          "Direct Parts",
+          0
+        ],
+        [
+          "West",
+          "Direct Parts",
+          12
+        ]
+      ]
+    ]
+  },
+  "I-39": {
+    "id": "I-39",
+    "title": "Prime Numbers",
+    "inputs": [
+      {
+        "headers": [
+          "integer_value"
+        ],
+        "rows": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7
+          ],
+          [
+            8
+          ],
+          [
+            9
+          ],
+          [
+            10
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          5
+        ],
+        [
+          7
+        ]
+      ]
+    ]
+  },
+  "I-40": {
+    "id": "I-40",
+    "title": "Sort Order",
+    "inputs": [
+      {
+        "headers": [
+          "city"
+        ],
+        "rows": [
+          [
+            "Atlanta"
+          ],
+          [
+            "Baltimore"
+          ],
+          [
+            "Chicago"
+          ],
+          [
+            "Denver"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Baltimore"
+        ],
+        [
+          "Denver"
+        ],
+        [
+          "Atlanta"
+        ],
+        [
+          "Chicago"
+        ]
+      ]
+    ]
+  },
+  "I-41": {
+    "id": "I-41",
+    "title": "Associate IDs",
+    "inputs": [
+      {
+        "headers": [
+          "associate_1",
+          "associate_2"
+        ],
+        "rows": [
+          [
+            "Anne",
+            "Betty"
+          ],
+          [
+            "Anne",
+            "Charles"
+          ],
+          [
+            "Betty",
+            "Dan"
+          ],
+          [
+            "Charles",
+            "Emma"
+          ],
+          [
+            "Francis",
+            "George"
+          ],
+          [
+            "George",
+            "Harriet"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Anne"
+        ],
+        [
+          1,
+          "Betty"
+        ],
+        [
+          1,
+          "Charles"
+        ],
+        [
+          1,
+          "Dan"
+        ],
+        [
+          1,
+          "Emma"
+        ],
+        [
+          2,
+          "Francis"
+        ],
+        [
+          2,
+          "George"
+        ],
+        [
+          2,
+          "Harriet"
+        ]
+      ]
+    ]
+  },
+  "I-42": {
+    "id": "I-42",
+    "title": "Mutual Friends",
+    "inputs": [
+      {
+        "headers": [
+          "friend_1",
+          "friend_2"
+        ],
+        "rows": [
+          [
+            "Jason",
+            "Mary"
+          ],
+          [
+            "Mike",
+            "Mary"
+          ],
+          [
+            "Mike",
+            "Jason"
+          ],
+          [
+            "Susan",
+            "Jason"
+          ],
+          [
+            "John",
+            "Mary"
+          ],
+          [
+            "Susan",
+            "Mary"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Jason",
+          "Mary",
+          2
+        ],
+        [
+          "John",
+          "Mary",
+          0
+        ],
+        [
+          "Jason",
+          "Mike",
+          1
+        ],
+        [
+          "Mary",
+          "Mike",
+          1
+        ],
+        [
+          "Jason",
+          "Susan",
+          1
+        ],
+        [
+          "Mary",
+          "Susan",
+          1
+        ]
+      ]
+    ]
+  },
+  "I-43": {
+    "id": "I-43",
+    "title": "Unbounded Preceding",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "customer_id",
+          "quantity"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            5
+          ],
+          [
+            2,
+            1001,
+            8
+          ],
+          [
+            3,
+            1001,
+            3
+          ],
+          [
+            4,
+            1001,
+            7
+          ],
+          [
+            1,
+            2002,
+            4
+          ],
+          [
+            2,
+            2002,
+            9
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1001,
+          5,
+          5
+        ],
+        [
+          2,
+          1001,
+          8,
+          5
+        ],
+        [
+          3,
+          1001,
+          3,
+          3
+        ],
+        [
+          4,
+          1001,
+          7,
+          3
+        ],
+        [
+          1,
+          2002,
+          4,
+          4
+        ],
+        [
+          2,
+          2002,
+          9,
+          4
+        ]
+      ]
+    ]
+  },
+  "I-44": {
+    "id": "I-44",
+    "title": "Slowly Changing Dimension Part I",
+    "inputs": [
+      {
+        "headers": [
+          "customer_id",
+          "balance_date",
+          "amount"
+        ],
+        "rows": [
+          [
+            1001,
+            "2021-10-11",
+            54.32
+          ],
+          [
+            1001,
+            "2021-10-10",
+            17.65
+          ],
+          [
+            1001,
+            "2021-09-18",
+            65.56
+          ],
+          [
+            1001,
+            "2021-09-12",
+            56.23
+          ],
+          [
+            1001,
+            "2021-09-01",
+            42.12
+          ],
+          [
+            2002,
+            "2021-10-15",
+            46.52
+          ],
+          [
+            2002,
+            "2021-10-13",
+            7.65
+          ],
+          [
+            2002,
+            "2021-09-15",
+            75.12
+          ],
+          [
+            2002,
+            "2021-09-10",
+            47.34
+          ],
+          [
+            2002,
+            "2021-09-02",
+            11.11
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          "2021-10-11",
+          "9999-12-31",
+          54.32
+        ],
+        [
+          1001,
+          "2021-10-10",
+          "2021-10-10",
+          17.65
+        ],
+        [
+          1001,
+          "2021-09-18",
+          "2021-10-09",
+          65.56
+        ],
+        [
+          1001,
+          "2021-09-12",
+          "2021-09-17",
+          56.23
+        ],
+        [
+          1001,
+          "2021-09-01",
+          "2021-09-11",
+          42.12
+        ],
+        [
+          2002,
+          "2021-10-15",
+          "9999-12-31",
+          46.52
+        ],
+        [
+          2002,
+          "2021-10-13",
+          "2021-10-14",
+          7.65
+        ],
+        [
+          2002,
+          "2021-09-15",
+          "2021-10-12",
+          75.12
+        ],
+        [
+          2002,
+          "2021-09-10",
+          "2021-09-14",
+          47.34
+        ],
+        [
+          2002,
+          "2021-09-02",
+          "2021-09-09",
+          11.11
+        ]
+      ]
+    ]
+  },
+  "I-45": {
+    "id": "I-45",
+    "title": "Slowly Changing Dimension Part II",
+    "inputs": [
+      {
+        "headers": [
+          "customer_id",
+          "start_date",
+          "end_date",
+          "amount"
+        ],
+        "rows": [
+          [
+            1001,
+            "2021-10-11",
+            "9999-12-31",
+            54.32
+          ],
+          [
+            1001,
+            "2021-10-10",
+            "2021-10-10",
+            17.65
+          ],
+          [
+            1001,
+            "2021-09-18",
+            "2021-10-12",
+            65.56
+          ],
+          [
+            2002,
+            "2021-09-12",
+            "2021-09-17",
+            56.23
+          ],
+          [
+            2002,
+            "2021-09-01",
+            "2021-09-17",
+            42.12
+          ],
+          [
+            2002,
+            "2021-08-15",
+            "2021-08-31",
+            16.32
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          "2021-09-18",
+          "2021-10-12",
+          65.56
+        ],
+        [
+          2002,
+          "2021-09-01",
+          "2021-09-17",
+          42.12
+        ]
+      ]
+    ]
+  },
+  "I-46": {
+    "id": "I-46",
+    "title": "Negative Account Balances",
+    "inputs": [
+      {
+        "headers": [
+          "account_id",
+          "balance"
+        ],
+        "rows": [
+          [
+            1001,
+            234.45
+          ],
+          [
+            1001,
+            -23.12
+          ],
+          [
+            2002,
+            -93.01
+          ],
+          [
+            2002,
+            -120.19
+          ],
+          [
+            3003,
+            186.76
+          ],
+          [
+            3003,
+            90.23
+          ],
+          [
+            3003,
+            10.11
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          2002
+        ]
+      ]
+    ]
+  },
+  "I-47": {
+    "id": "I-47",
+    "title": "Work Schedule",
+    "inputs": [
+      {
+        "headers": [
+          "schedule_id",
+          "start_time",
+          "end_time"
+        ],
+        "rows": [
+          [
+            "A",
+            "2021-10-01 10:00",
+            "2021-10-01 15:00"
+          ],
+          [
+            "B",
+            "2021-10-01 10:15",
+            "2021-10-01 12:15"
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "schedule_id",
+          "activity",
+          "start_time",
+          "end_time"
+        ],
+        "rows": [
+          [
+            "A",
+            "Meeting",
+            "2021-10-01 10:00",
+            "2021-10-01 10:30"
+          ],
+          [
+            "A",
+            "Break",
+            "2021-10-01 12:00",
+            "2021-10-01 12:30"
+          ],
+          [
+            "A",
+            "Meeting",
+            "2021-10-01 13:00",
+            "2021-10-01 13:30"
+          ],
+          [
+            "B",
+            "Break",
+            "2021-10-01 11:00",
+            "2021-10-01 11:15"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "A",
+          "Meeting",
+          "2021-10-01 10:00",
+          "2021-10-01 10:30"
+        ],
+        [
+          "A",
+          "Work",
+          "2021-10-01 10:30",
+          "2021-10-01 12:00"
+        ],
+        [
+          "A",
+          "Break",
+          "2021-10-01 12:00",
+          "2021-10-01 12:30"
+        ],
+        [
+          "A",
+          "Work",
+          "2021-10-01 12:30",
+          "2021-10-01 13:00"
+        ],
+        [
+          "A",
+          "Meeting",
+          "2021-10-01 13:00",
+          "2021-10-01 13:30"
+        ],
+        [
+          "A",
+          "Work",
+          "2021-10-01 13:30",
+          "2021-10-01 15:00"
+        ],
+        [
+          "B",
+          "Work",
+          "2021-10-01 10:15",
+          "2021-10-01 11:00"
+        ],
+        [
+          "B",
+          "Break",
+          "2021-10-01 11:00",
+          "2021-10-01 11:15"
+        ],
+        [
+          "B",
+          "Work",
+          "2021-10-01 11:15",
+          "2021-10-01 12:15"
+        ]
+      ]
+    ]
+  },
+  "I-48": {
+    "id": "I-48",
+    "title": "Consecutive Sales",
+    "inputs": [
+      {
+        "headers": [
+          "sales_id",
+          "year"
+        ],
+        "rows": [
+          [
+            1001,
+            2018
+          ],
+          [
+            1001,
+            2019
+          ],
+          [
+            1001,
+            2020
+          ],
+          [
+            2002,
+            2020
+          ],
+          [
+            2002,
+            2021
+          ],
+          [
+            3003,
+            2018
+          ],
+          [
+            3003,
+            2020
+          ],
+          [
+            3003,
+            2021
+          ],
+          [
+            4004,
+            2019
+          ],
+          [
+            4004,
+            2020
+          ],
+          [
+            4004,
+            2021
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          4004
+        ]
+      ]
+    ]
+  },
+  "I-49": {
+    "id": "I-49",
+    "title": "Sumo Wrestlers",
+    "inputs": [
+      {
+        "headers": [
+          "line_order",
+          "name",
+          "weight"
+        ],
+        "rows": [
+          [
+            1,
+            "Haruto",
+            611
+          ],
+          [
+            2,
+            "Minato",
+            533
+          ],
+          [
+            3,
+            "Haruki",
+            623
+          ],
+          [
+            4,
+            "Sota",
+            569
+          ],
+          [
+            5,
+            "Aoto",
+            610
+          ],
+          [
+            6,
+            "Hinata",
+            525
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Haruki"
+        ]
+      ]
+    ]
+  },
+  "I-50": {
+    "id": "I-50",
+    "title": "Baseball Balls and Strikes",
+    "inputs": [
+      {
+        "headers": [
+          "batter_id",
+          "pitch_number",
+          "result"
+        ],
+        "rows": [
+          [
+            1001,
+            1,
+            "Foul"
+          ],
+          [
+            1001,
+            2,
+            "Foul"
+          ],
+          [
+            1001,
+            3,
+            "Ball"
+          ],
+          [
+            1001,
+            4,
+            "Ball"
+          ],
+          [
+            1001,
+            5,
+            "Strike"
+          ],
+          [
+            2002,
+            1,
+            "Ball"
+          ],
+          [
+            2002,
+            2,
+            "Strike"
+          ],
+          [
+            2002,
+            3,
+            "Foul"
+          ],
+          [
+            2002,
+            4,
+            "Foul"
+          ],
+          [
+            2002,
+            5,
+            "Foul"
+          ],
+          [
+            2002,
+            6,
+            "In Play"
+          ],
+          [
+            3003,
+            1,
+            "Ball"
+          ],
+          [
+            3003,
+            2,
+            "Ball"
+          ],
+          [
+            3003,
+            3,
+            "Ball"
+          ],
+          [
+            3003,
+            4,
+            "Ball"
+          ],
+          [
+            4004,
+            1,
+            "Foul"
+          ],
+          [
+            4004,
+            2,
+            "Foul"
+          ],
+          [
+            4004,
+            3,
+            "Foul"
+          ],
+          [
+            4004,
+            4,
+            "Foul"
+          ],
+          [
+            4004,
+            5,
+            "Foul"
+          ],
+          [
+            4004,
+            6,
+            "Strike"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          1,
+          "Foul",
+          "0 - 0",
+          "0 - 1"
+        ],
+        [
+          1001,
+          2,
+          "Foul",
+          "0 - 1",
+          "0 - 2"
+        ],
+        [
+          1001,
+          3,
+          "Ball",
+          "0 - 2",
+          "1 - 2"
+        ],
+        [
+          1001,
+          4,
+          "Ball",
+          "1 - 2",
+          "2 - 2"
+        ],
+        [
+          1001,
+          5,
+          "Strike",
+          "2 - 2",
+          "2 - 3"
+        ],
+        [
+          2002,
+          1,
+          "Ball",
+          "0 - 0",
+          "1 - 0"
+        ],
+        [
+          2002,
+          2,
+          "Strike",
+          "1 - 0",
+          "1 - 1"
+        ],
+        [
+          2002,
+          3,
+          "Foul",
+          "1 - 1",
+          "1 - 2"
+        ],
+        [
+          2002,
+          4,
+          "Foul",
+          "1 - 2",
+          "1 - 2"
+        ],
+        [
+          2002,
+          5,
+          "Foul",
+          "1 - 2",
+          "1 - 2"
+        ],
+        [
+          2002,
+          6,
+          "In Play",
+          "1 - 2",
+          "In-Play"
+        ],
+        [
+          3003,
+          1,
+          "Ball",
+          "0 - 0",
+          "1 - 0"
+        ],
+        [
+          3003,
+          2,
+          "Ball",
+          "1 - 0",
+          "2 - 0"
+        ],
+        [
+          3003,
+          3,
+          "Ball",
+          "2 - 0",
+          "3 - 0"
+        ],
+        [
+          3003,
+          4,
+          "Ball",
+          "3 - 0",
+          "4 - 0"
+        ],
+        [
+          4004,
+          1,
+          "Foul",
+          "0 - 0",
+          "0 - 1"
+        ],
+        [
+          4004,
+          2,
+          "Foul",
+          "0 - 1",
+          "0 - 2"
+        ],
+        [
+          4004,
+          3,
+          "Foul",
+          "0 - 2",
+          "0 - 2"
+        ],
+        [
+          4004,
+          4,
+          "Foul",
+          "0 - 2",
+          "0 - 2"
+        ],
+        [
+          4004,
+          5,
+          "Foul",
+          "0 - 2",
+          "0 - 2"
+        ],
+        [
+          4004,
+          6,
+          "Strike",
+          "0 - 2",
+          "0 - 3"
+        ]
+      ]
+    ]
+  },
+  "I-51": {
+    "id": "I-51",
+    "title": "Primary Key Creation",
+    "inputs": [
+      {
+        "headers": [
+          "assembly_id",
+          "part"
+        ],
+        "rows": [
+          [
+            1001,
+            "Bolt"
+          ],
+          [
+            1001,
+            "Screw"
+          ],
+          [
+            2002,
+            "Nut"
+          ],
+          [
+            2002,
+            "Washer"
+          ],
+          [
+            3003,
+            "Toggle"
+          ],
+          [
+            3003,
+            "Bolt"
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "I-52": {
+    "id": "I-52",
+    "title": "Phone Numbers Table",
+    "inputs": [
+      {
+        "headers": [
+          "customer_id",
+          "phone_number"
+        ],
+        "rows": [
+          [
+            1001,
+            "(555)-555-5555"
+          ],
+          [
+            2002,
+            "(555)-555-5555"
+          ],
+          [
+            3003,
+            "(555)-555-5555"
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "I-53": {
+    "id": "I-53",
+    "title": "Spouse IDs",
+    "inputs": [
+      {
+        "headers": [
+          "primary_id",
+          "spouse_id"
+        ],
+        "rows": [
+          [
+            "Pat",
+            "Charlie"
+          ],
+          [
+            "Jordan",
+            "Casey"
+          ],
+          [
+            "Ashley",
+            "Dee"
+          ],
+          [
+            "Charlie",
+            "Pat"
+          ],
+          [
+            "Casey",
+            "Jordan"
+          ],
+          [
+            "Dee",
+            "Ashley"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Ashley",
+          "Dee"
+        ],
+        [
+          1,
+          "Dee",
+          "Ashley"
+        ],
+        [
+          2,
+          "Jordan",
+          "Casey"
+        ],
+        [
+          2,
+          "Casey",
+          "Jordan"
+        ],
+        [
+          3,
+          "Charlie",
+          "Pat"
+        ],
+        [
+          3,
+          "Pat",
+          "Charlie"
+        ]
+      ]
+    ]
+  },
+  "I-54": {
+    "id": "I-54",
+    "title": "Winning the Lottery",
+    "inputs": [
+      {
+        "headers": [
+          "number"
+        ],
+        "rows": [
+          [
+            25
+          ],
+          [
+            45
+          ],
+          [
+            78
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "ticket_id",
+          "number"
+        ],
+        "rows": [
+          [
+            "AAA",
+            25
+          ],
+          [
+            "AAA",
+            45
+          ],
+          [
+            "AAA",
+            78
+          ],
+          [
+            "BBB",
+            25
+          ],
+          [
+            "BBB",
+            45
+          ],
+          [
+            "BBB",
+            98
+          ],
+          [
+            "CCC",
+            67
+          ],
+          [
+            "CCC",
+            86
+          ],
+          [
+            "CCC",
+            91
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          110
+        ]
+      ]
+    ]
+  },
+  "I-55": {
+    "id": "I-55",
+    "title": "Table Audit",
+    "inputs": [
+      {
+        "headers": [
+          "product_name",
+          "quantity"
+        ],
+        "rows": [
+          [
+            "Widget",
+            7
+          ],
+          [
+            "Doodad",
+            9
+          ],
+          [
+            "Gizmo",
+            3
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "product_name",
+          "quantity"
+        ],
+        "rows": [
+          [
+            "Widget",
+            7
+          ],
+          [
+            "Doodad",
+            6
+          ],
+          [
+            "Dingbat",
+            9
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Matches in both table A and table B",
+          "Widget"
+        ],
+        [
+          "Product does not exist in table A",
+          "Dingbat"
+        ],
+        [
+          "Product does not exist in table B",
+          "Gizmo"
+        ],
+        [
+          "Quantity in table A and table B do not match",
+          "Doodad"
+        ]
+      ]
+    ]
+  },
+  "I-56": {
+    "id": "I-56",
+    "title": "Numbers Using Recursion",
+    "inputs": [],
+    "expected": [
+      [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ]
+      ]
+    ]
+  },
+  "I-57": {
+    "id": "I-57",
+    "title": "Find the Spaces",
+    "inputs": [
+      {
+        "headers": [
+          "statement"
+        ],
+        "rows": [
+          [
+            "SELECT EmpID FROM Employees;"
+          ],
+          [
+            "SELECT * FROM Transactions;"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1,
+          "SELECT EmpID FROM Employees;",
+          1,
+          6,
+          "SELECT"
+        ],
+        [
+          2,
+          1,
+          "SELECT EmpID FROM Employees;",
+          8,
+          12,
+          "EmpID"
+        ],
+        [
+          3,
+          1,
+          "SELECT EmpID FROM Employees;",
+          14,
+          17,
+          "FROM"
+        ],
+        [
+          4,
+          1,
+          "SELECT EmpID FROM Employees;",
+          19,
+          28,
+          "Employees;"
+        ],
+        [
+          1,
+          2,
+          "SELECT * FROM Transactions;",
+          1,
+          6,
+          "SELECT"
+        ],
+        [
+          2,
+          2,
+          "SELECT * FROM Transactions;",
+          8,
+          8,
+          "*"
+        ],
+        [
+          3,
+          2,
+          "SELECT * FROM Transactions;",
+          10,
+          13,
+          "FROM"
+        ],
+        [
+          4,
+          2,
+          "SELECT * FROM Transactions;",
+          15,
+          27,
+          "Transactions;"
+        ]
+      ]
+    ]
+  },
+  "I-58": {
+    "id": "I-58",
+    "title": "Add Them Up",
+    "inputs": [
+      {
+        "headers": [
+          "equation"
+        ],
+        "rows": [
+          [
+            "123"
+          ],
+          [
+            "1+2+3"
+          ],
+          [
+            "1+2-3"
+          ],
+          [
+            "1+23"
+          ],
+          [
+            "1-2+3"
+          ],
+          [
+            "1-2-3"
+          ],
+          [
+            "1-23"
+          ],
+          [
+            "12+3"
+          ],
+          [
+            "12-3"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "1+2+3",
+          6
+        ],
+        [
+          "1+2-3",
+          0
+        ],
+        [
+          "1+23",
+          24
+        ],
+        [
+          "1-2+3",
+          2
+        ],
+        [
+          "1-2-3",
+          -4
+        ],
+        [
+          "1-23",
+          -22
+        ],
+        [
+          "12+3",
+          15
+        ],
+        [
+          "12-3",
+          9
+        ],
+        [
+          "123",
+          123
+        ]
+      ]
+    ]
+  },
+  "I-59": {
+    "id": "I-59",
+    "title": "Balanced String",
+    "inputs": [
+      {
+        "headers": [
+          "id",
+          "string"
+        ],
+        "rows": [
+          [
+            1,
+            "()"
+          ],
+          [
+            2,
+            "[]"
+          ],
+          [
+            3,
+            "{}"
+          ],
+          [
+            4,
+            "((({})))"
+          ],
+          [
+            5,
+            "()[]"
+          ],
+          [
+            6,
+            "({})"
+          ],
+          [
+            7,
+            "({)"
+          ],
+          [
+            8,
+            "((())))"
+          ],
+          [
+            9,
+            "}()[]["
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "()",
+          "Balanced"
+        ],
+        [
+          2,
+          "[]",
+          "Balanced"
+        ],
+        [
+          3,
+          "{}",
+          "Balanced"
+        ],
+        [
+          4,
+          "((({})))",
+          "Balanced"
+        ],
+        [
+          5,
+          "()[]",
+          "Balanced"
+        ],
+        [
+          6,
+          "({})",
+          "Balanced"
+        ],
+        [
+          7,
+          "({)",
+          "Unbalanced"
+        ],
+        [
+          8,
+          "((())))",
+          "Unbalanced"
+        ],
+        [
+          9,
+          "}()[][",
+          "Unbalanced"
+        ]
+      ]
+    ]
+  },
+  "I-60": {
+    "id": "I-60",
+    "title": "Products Without Duplicates",
+    "inputs": [
+      {
+        "headers": [
+          "product",
+          "product_code"
+        ],
+        "rows": [
+          [
+            "Alpha",
+            "01"
+          ],
+          [
+            "Alpha",
+            "02"
+          ],
+          [
+            "Bravo",
+            "03"
+          ],
+          [
+            "Charlie",
+            "02"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "01"
+        ],
+        [
+          "03"
+        ]
+      ]
+    ]
+  },
+  "I-61": {
+    "id": "I-61",
+    "title": "Player Scores",
+    "inputs": [
+      {
+        "headers": [
+          "attempt_id",
+          "player_id",
+          "score"
+        ],
+        "rows": [
+          [
+            1,
+            1001,
+            2
+          ],
+          [
+            2,
+            1001,
+            7
+          ],
+          [
+            3,
+            1001,
+            8
+          ],
+          [
+            1,
+            2002,
+            6
+          ],
+          [
+            2,
+            2002,
+            9
+          ],
+          [
+            3,
+            2002,
+            7
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1001,
+          2,
+          0,
+          -6,
+          1,
+          1
+        ],
+        [
+          2,
+          1001,
+          7,
+          5,
+          -1,
+          1,
+          1
+        ],
+        [
+          3,
+          1001,
+          8,
+          6,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2002,
+          6,
+          0,
+          -1,
+          1,
+          0
+        ],
+        [
+          2,
+          2002,
+          9,
+          3,
+          2,
+          1,
+          0
+        ],
+        [
+          3,
+          2002,
+          7,
+          1,
+          0,
+          0,
+          0
+        ]
+      ]
+    ]
+  },
+  "I-62": {
+    "id": "I-62",
+    "title": "Car and Boat Purchase",
+    "inputs": [
+      {
+        "headers": [
+          "vehicle_id",
+          "type",
+          "model",
+          "price"
+        ],
+        "rows": [
+          [
+            1,
+            "Car",
+            "Rolls-Royce Phantom",
+            460000
+          ],
+          [
+            2,
+            "Car",
+            "Cadillac CT5",
+            39000
+          ],
+          [
+            3,
+            "Car",
+            "Porsche Boxster",
+            63000
+          ],
+          [
+            4,
+            "Car",
+            "Lamborghini Spyder",
+            290000
+          ],
+          [
+            5,
+            "Boat",
+            "Malibu",
+            210000
+          ],
+          [
+            6,
+            "Boat",
+            "ATX 22-S",
+            85000
+          ],
+          [
+            7,
+            "Boat",
+            "Sea Ray SLX",
+            520000
+          ],
+          [
+            8,
+            "Boat",
+            "Mastercraft",
+            25000
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Lamborghini Spyder",
+          "ATX 22-S"
+        ],
+        [
+          "Lamborghini Spyder",
+          "Mastercraft"
+        ],
+        [
+          "Rolls-Royce Phantom",
+          "ATX 22-S"
+        ],
+        [
+          "Rolls-Royce Phantom",
+          "Malibu"
+        ],
+        [
+          "Rolls-Royce Phantom",
+          "Mastercraft"
+        ]
+      ]
+    ]
+  },
+  "I-63": {
+    "id": "I-63",
+    "title": "Promotion Codes",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "product",
+          "discount"
+        ],
+        "rows": [
+          [
+            1,
+            "Item 1",
+            "PROMO"
+          ],
+          [
+            1,
+            "Item 1",
+            "PROMO"
+          ],
+          [
+            1,
+            "Item 1",
+            "MARKDOWN"
+          ],
+          [
+            1,
+            "Item 2",
+            "PROMO"
+          ],
+          [
+            2,
+            "Item 2",
+            null
+          ],
+          [
+            2,
+            "Item 3",
+            "MARKDOWN"
+          ],
+          [
+            2,
+            "Item 3",
+            null
+          ],
+          [
+            3,
+            "Item 1",
+            "PROMO"
+          ],
+          [
+            3,
+            "Item 1",
+            "PROMO"
+          ],
+          [
+            3,
+            "Item 1",
+            "PROMO"
+          ],
+          [
+            4,
+            "Item 1",
+            "PROMO"
+          ],
+          [
+            4,
+            "Item 1",
+            "MARKDOWN"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          3
+        ]
+      ]
+    ]
+  },
+  "I-64": {
+    "id": "I-64",
+    "title": "Between Quotes",
+    "inputs": [
+      {
+        "headers": [
+          "id",
+          "string"
+        ],
+        "rows": [
+          [
+            1,
+            "\"12345678901234\""
+          ],
+          [
+            2,
+            "1\"12345678901234\""
+          ],
+          [
+            3,
+            "123\"45678\"901234\""
+          ],
+          [
+            4,
+            "123\"45678901234\""
+          ],
+          [
+            5,
+            "12345678901\"234\""
+          ],
+          [
+            6,
+            "12345678901234"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "\"12345678901234\"",
+          "True"
+        ],
+        [
+          2,
+          "1\"12345678901234\"",
+          "True"
+        ],
+        [
+          3,
+          "123\"45678\"901234\"",
+          "Error"
+        ],
+        [
+          4,
+          "123\"45678901234\"",
+          "True"
+        ],
+        [
+          5,
+          "12345678901\"234\"",
+          "False"
+        ],
+        [
+          6,
+          "12345678901234",
+          "Error"
+        ]
+      ]
+    ]
+  },
+  "I-65": {
+    "id": "I-65",
+    "title": "Home Listings",
+    "inputs": [
+      {
+        "headers": [
+          "listing_id",
+          "home_id",
+          "status"
+        ],
+        "rows": [
+          [
+            1,
+            "Home A",
+            "New Listing"
+          ],
+          [
+            2,
+            "Home A",
+            "Pending"
+          ],
+          [
+            3,
+            "Home A",
+            "Relisted"
+          ],
+          [
+            4,
+            "Home B",
+            "New Listing"
+          ],
+          [
+            5,
+            "Home B",
+            "Under Contract"
+          ],
+          [
+            6,
+            "Home B",
+            "Relisted"
+          ],
+          [
+            7,
+            "Home C",
+            "New Listing"
+          ],
+          [
+            8,
+            "Home C",
+            "Under Contract"
+          ],
+          [
+            9,
+            "Home C",
+            "Closed"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Home A",
+          "New Listing",
+          1
+        ],
+        [
+          2,
+          "Home A",
+          "Pending",
+          1
+        ],
+        [
+          3,
+          "Home A",
+          "Relisted",
+          2
+        ],
+        [
+          4,
+          "Home B",
+          "New Listing",
+          3
+        ],
+        [
+          5,
+          "Home B",
+          "Under Contract",
+          3
+        ],
+        [
+          6,
+          "Home B",
+          "Relisted",
+          4
+        ],
+        [
+          7,
+          "Home C",
+          "New Listing",
+          5
+        ],
+        [
+          8,
+          "Home C",
+          "Under Contract",
+          5
+        ],
+        [
+          9,
+          "Home C",
+          "Closed",
+          5
+        ]
+      ]
+    ]
+  },
+  "I-66": {
+    "id": "I-66",
+    "title": "Matching Parts",
+    "inputs": [
+      {
+        "headers": [
+          "serial",
+          "manufacture_day",
+          "product"
+        ],
+        "rows": [
+          [
+            "A111",
+            1,
+            "Bolt"
+          ],
+          [
+            "B111",
+            3,
+            "Bolt"
+          ],
+          [
+            "C111",
+            5,
+            "Bolt"
+          ],
+          [
+            "D222",
+            2,
+            "Washer"
+          ],
+          [
+            "E222",
+            4,
+            "Washer"
+          ],
+          [
+            "F222",
+            6,
+            "Washer"
+          ],
+          [
+            "G333",
+            3,
+            "Nut"
+          ],
+          [
+            "H333",
+            5,
+            "Nut"
+          ],
+          [
+            "I333",
+            7,
+            "Nut"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "A111",
+          "D222",
+          "G333"
+        ],
+        [
+          "B111",
+          "E222",
+          "H333"
+        ],
+        [
+          "C111",
+          "F222",
+          "I333"
+        ]
+      ]
+    ]
+  },
+  "I-67": {
+    "id": "I-67",
+    "title": "Matching Birthdays",
+    "inputs": [
+      {
+        "headers": [
+          "student",
+          "birthday"
+        ],
+        "rows": [
+          [
+            "Susan",
+            "2015-04-15"
+          ],
+          [
+            "Tim",
+            "2015-04-15"
+          ],
+          [
+            "Jacob",
+            "2015-04-15"
+          ],
+          [
+            "Earl",
+            "2015-02-05"
+          ],
+          [
+            "Mike",
+            "2015-05-23"
+          ],
+          [
+            "Angie",
+            "2015-05-23"
+          ],
+          [
+            "Jenny",
+            "2015-11-19"
+          ],
+          [
+            "Michelle",
+            "2015-12-12"
+          ],
+          [
+            "Aaron",
+            "2015-12-18"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "2015-04-15",
+          "Jacob, Susan, Tim"
+        ],
+        [
+          "2015-05-23",
+          "Angie, Mike"
+        ]
+      ]
+    ]
+  },
+  "I-68": {
+    "id": "I-68",
+    "title": "Removing Outliers",
+    "inputs": [
+      {
+        "headers": [
+          "team",
+          "year",
+          "score"
+        ],
+        "rows": [
+          [
+            "Cougars",
+            2015,
+            50
+          ],
+          [
+            "Cougars",
+            2016,
+            45
+          ],
+          [
+            "Cougars",
+            2017,
+            65
+          ],
+          [
+            "Cougars",
+            2018,
+            92
+          ],
+          [
+            "Bulldogs",
+            2015,
+            65
+          ],
+          [
+            "Bulldogs",
+            2016,
+            60
+          ],
+          [
+            "Bulldogs",
+            2017,
+            58
+          ],
+          [
+            "Bulldogs",
+            2018,
+            12
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "Bulldogs",
+          61
+        ],
+        [
+          "Cougars",
+          53
+        ]
+      ]
+    ]
+  },
+  "I-69": {
+    "id": "I-69",
+    "title": "Splitting a Hierarchy",
+    "inputs": [
+      {
+        "headers": [
+          "parent",
+          "child"
+        ],
+        "rows": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "A",
+            "C"
+          ],
+          [
+            "B",
+            "D"
+          ],
+          [
+            "B",
+            "E"
+          ],
+          [
+            "D",
+            "G"
+          ],
+          [
+            "C",
+            "F"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "A"
+        ],
+        [
+          1,
+          "B"
+        ],
+        [
+          1,
+          "D"
+        ],
+        [
+          1,
+          "E"
+        ],
+        [
+          1,
+          "G"
+        ],
+        [
+          2,
+          "A"
+        ],
+        [
+          2,
+          "C"
+        ],
+        [
+          2,
+          "F"
+        ]
+      ]
+    ]
+  },
+  "I-70": {
+    "id": "I-70",
+    "title": "Student Facts",
+    "inputs": [
+      {
+        "headers": [
+          "parent_id",
+          "child_id",
+          "age",
+          "gender"
+        ],
+        "rows": [
+          [
+            1001,
+            "A",
+            8,
+            "M"
+          ],
+          [
+            1001,
+            "B",
+            12,
+            "F"
+          ],
+          [
+            2002,
+            "C",
+            7,
+            "F"
+          ],
+          [
+            2002,
+            "D",
+            9,
+            "F"
+          ],
+          [
+            2002,
+            "E",
+            14,
+            "M"
+          ],
+          [
+            3003,
+            "F",
+            12,
+            "F"
+          ],
+          [
+            3003,
+            "G",
+            14,
+            "M"
+          ],
+          [
+            4004,
+            "H",
+            7,
+            "M"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1001,
+          2,
+          10,
+          4,
+          4,
+          8,
+          12,
+          "M, F"
+        ],
+        [
+          2002,
+          3,
+          10,
+          7,
+          5,
+          7,
+          14,
+          "F, F, M"
+        ],
+        [
+          3003,
+          2,
+          13,
+          2,
+          2,
+          12,
+          14,
+          "F, M"
+        ],
+        [
+          4004,
+          1,
+          7,
+          0,
+          0,
+          7,
+          7,
+          "M"
+        ]
+      ]
+    ]
+  },
+  "I-71": {
+    "id": "I-71",
+    "title": "Employee Validation",
+    "inputs": [
+      {
+        "headers": [
+          "employee_id",
+          "department"
+        ],
+        "rows": [
+          [
+            1001,
+            "Engineering"
+          ],
+          [
+            2002,
+            "Sales"
+          ],
+          [
+            3003,
+            "Marketing"
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "employee_id",
+          "department"
+        ],
+        "rows": [
+          [
+            4004,
+            "Marketing"
+          ],
+          [
+            5005,
+            "Accounting"
+          ],
+          [
+            6006,
+            "Accounting"
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "employee_id",
+          "name"
+        ],
+        "rows": [
+          [
+            1001,
+            "John"
+          ],
+          [
+            2002,
+            "Eric"
+          ],
+          [
+            3003,
+            "Jennifer"
+          ],
+          [
+            4004,
+            "Bob"
+          ],
+          [
+            5005,
+            "Stuart"
+          ],
+          [
+            6006,
+            "Angie"
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "I-72": {
+    "id": "I-72",
+    "title": "Under Warranty",
+    "inputs": [
+      {
+        "headers": [
+          "repair_id",
+          "customer_id",
+          "repair_date"
+        ],
+        "rows": [
+          [
+            1001,
+            "A",
+            "2023-01-01"
+          ],
+          [
+            2002,
+            "A",
+            "2023-01-15"
+          ],
+          [
+            3003,
+            "A",
+            "2023-01-17"
+          ],
+          [
+            4004,
+            "A",
+            "2023-03-24"
+          ],
+          [
+            5005,
+            "A",
+            "2023-04-01"
+          ],
+          [
+            6006,
+            "B",
+            "2023-06-22"
+          ],
+          [
+            7007,
+            "B",
+            "2023-06-23"
+          ],
+          [
+            8008,
+            "B",
+            "2023-09-01"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "A",
+          2002,
+          1001,
+          "2023-01-15",
+          "2023-01-01",
+          1,
+          14
+        ],
+        [
+          "A",
+          3003,
+          2002,
+          "2023-01-17",
+          "2023-01-15",
+          2,
+          2
+        ],
+        [
+          "A",
+          5005,
+          4004,
+          "2023-04-01",
+          "2023-03-24",
+          1,
+          8
+        ],
+        [
+          "B",
+          7007,
+          6006,
+          "2023-06-23",
+          "2023-06-22",
+          1,
+          1
+        ]
+      ]
+    ]
+  },
+  "I-73": {
+    "id": "I-73",
+    "title": "Distinct Statuses",
+    "inputs": [
+      {
+        "headers": [
+          "step_id",
+          "workflow",
+          "status"
+        ],
+        "rows": [
+          [
+            1,
+            "Alpha",
+            "Open"
+          ],
+          [
+            2,
+            "Alpha",
+            "Open"
+          ],
+          [
+            3,
+            "Alpha",
+            "Inactive"
+          ],
+          [
+            4,
+            "Alpha",
+            "Open"
+          ],
+          [
+            5,
+            "Bravo",
+            "Closed"
+          ],
+          [
+            6,
+            "Bravo",
+            "Closed"
+          ],
+          [
+            7,
+            "Bravo",
+            "Open"
+          ],
+          [
+            8,
+            "Bravo",
+            "Inactive"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Alpha",
+          "Open",
+          1
+        ],
+        [
+          2,
+          "Alpha",
+          "Open",
+          1
+        ],
+        [
+          3,
+          "Alpha",
+          "Inactive",
+          2
+        ],
+        [
+          4,
+          "Alpha",
+          "Open",
+          2
+        ],
+        [
+          5,
+          "Bravo",
+          "Closed",
+          1
+        ],
+        [
+          6,
+          "Bravo",
+          "Closed",
+          1
+        ],
+        [
+          7,
+          "Bravo",
+          "Open",
+          2
+        ],
+        [
+          8,
+          "Bravo",
+          "Inactive",
+          3
+        ]
+      ]
+    ]
+  },
+  "I-74": {
+    "id": "I-74",
+    "title": "Bowling League",
+    "inputs": [
+      {
+        "headers": [
+          "game_id",
+          "bowler",
+          "score"
+        ],
+        "rows": [
+          [
+            1,
+            "John",
+            167
+          ],
+          [
+            1,
+            "Susan",
+            139
+          ],
+          [
+            1,
+            "Ralph",
+            95
+          ],
+          [
+            1,
+            "Mary",
+            90
+          ],
+          [
+            2,
+            "Susan",
+            187
+          ],
+          [
+            2,
+            "John",
+            155
+          ],
+          [
+            2,
+            "Dennis",
+            100
+          ],
+          [
+            2,
+            "Anthony",
+            78
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "John",
+          "Susan",
+          2
+        ],
+        [
+          "Ralph",
+          "Susan",
+          1
+        ],
+        [
+          "Mary",
+          "Ralph",
+          1
+        ],
+        [
+          "Dennis",
+          "John",
+          1
+        ],
+        [
+          "Anthony",
+          "Dennis",
+          1
+        ]
+      ]
+    ]
+  },
+  "I-75": {
+    "id": "I-75",
+    "title": "Symmetric Matches",
+    "inputs": [
+      {
+        "headers": [
+          "box_id",
+          "length",
+          "width",
+          "height"
+        ],
+        "rows": [
+          [
+            "A",
+            10,
+            25,
+            15
+          ],
+          [
+            "B",
+            15,
+            10,
+            25
+          ],
+          [
+            "C",
+            10,
+            16,
+            24
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "A",
+          1
+        ],
+        [
+          "B",
+          1
+        ],
+        [
+          "C",
+          2
+        ]
+      ]
+    ]
+  },
+  "I-76": {
+    "id": "I-76",
+    "title": "Determine Batches",
+    "inputs": [
+      {
+        "headers": [
+          "batch",
+          "batch_start"
+        ],
+        "rows": [
+          [
+            "A",
+            1
+          ],
+          [
+            "A",
+            5
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "batch",
+          "line",
+          "syntax"
+        ],
+        "rows": [
+          [
+            "A",
+            1,
+            "SELECT *"
+          ],
+          [
+            "A",
+            2,
+            "FROM Account;"
+          ],
+          [
+            "A",
+            3,
+            "GO"
+          ],
+          [
+            "A",
+            4,
+            null
+          ],
+          [
+            "A",
+            5,
+            "TRUNCATE TABLE Accounts;"
+          ],
+          [
+            "A",
+            6,
+            "GO"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "A",
+          1,
+          3
+        ],
+        [
+          "A",
+          5,
+          6
+        ]
+      ]
+    ]
+  },
+  "I-77": {
+    "id": "I-77",
+    "title": "Temperature Readings",
+    "inputs": [
+      {
+        "headers": [
+          "temperature_id",
+          "temperature_value"
+        ],
+        "rows": [
+          [
+            1,
+            52
+          ],
+          [
+            2,
+            null
+          ],
+          [
+            3,
+            null
+          ],
+          [
+            4,
+            65
+          ],
+          [
+            5,
+            null
+          ],
+          [
+            6,
+            72
+          ],
+          [
+            7,
+            null
+          ],
+          [
+            8,
+            70
+          ],
+          [
+            9,
+            null
+          ],
+          [
+            10,
+            75
+          ],
+          [
+            11,
+            null
+          ],
+          [
+            12,
+            80
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          52
+        ],
+        [
+          2,
+          65
+        ],
+        [
+          3,
+          65
+        ],
+        [
+          4,
+          65
+        ],
+        [
+          5,
+          72
+        ],
+        [
+          6,
+          72
+        ],
+        [
+          7,
+          72
+        ],
+        [
+          8,
+          70
+        ],
+        [
+          9,
+          75
+        ],
+        [
+          10,
+          75
+        ],
+        [
+          11,
+          80
+        ],
+        [
+          12,
+          80
+        ]
+      ]
+    ]
+  },
+  "I-78": {
+    "id": "I-78",
+    "title": "Check For Existence",
+    "inputs": [
+      {
+        "headers": [
+          "statusid",
+          "status"
+        ],
+        "rows": [
+          [
+            1,
+            "Completed"
+          ],
+          [
+            2,
+            "Fail"
+          ],
+          [
+            3,
+            "Unknown"
+          ],
+          [
+            4,
+            "Completed"
+          ]
+        ]
+      },
+      {
+        "headers": [
+          "statuscode"
+        ],
+        "rows": [
+          [
+            "AE-Z3FE34-D"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          "Completed"
+        ],
+        [
+          2,
+          "Fail"
+        ],
+        [
+          3,
+          "Unknown"
+        ],
+        [
+          4,
+          "Completed"
+        ]
+      ]
+    ]
+  },
+  "II-01": {
+    "id": "II-01",
+    "title": "Factorials",
+    "inputs": [
+      {
+        "headers": [
+          "n"
+        ],
+        "rows": [
+          [
+            10
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          24
+        ],
+        [
+          5,
+          120
+        ],
+        [
+          6,
+          720
+        ],
+        [
+          7,
+          5040
+        ],
+        [
+          8,
+          40320
+        ],
+        [
+          9,
+          362880
+        ],
+        [
+          10,
+          3628800
+        ]
+      ]
+    ]
+  },
+  "II-02": {
+    "id": "II-02",
+    "title": "All Permutations",
+    "inputs": [
+      {
+        "headers": [
+          "n"
+        ],
+        "rows": [
+          [
+            3
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          3,
+          "1,2,3"
+        ],
+        [
+          3,
+          "1,3,2"
+        ],
+        [
+          3,
+          "2,1,3"
+        ],
+        [
+          3,
+          "2,3,1"
+        ],
+        [
+          3,
+          "3,1,2"
+        ],
+        [
+          3,
+          "3,2,1"
+        ]
+      ]
+    ]
+  },
+  "II-03": {
+    "id": "II-03",
+    "title": "Growing Numbers",
+    "inputs": [
+      {
+        "headers": [
+          "n"
+        ],
+        "rows": [
+          [
+            5
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "1"
+        ],
+        [
+          "12"
+        ],
+        [
+          "123"
+        ],
+        [
+          "1234"
+        ],
+        [
+          "12345"
+        ]
+      ]
+    ]
+  },
+  "II-04": {
+    "id": "II-04",
+    "title": "Non-Adjacent Numbers",
+    "inputs": [
+      {
+        "headers": [
+          "n"
+        ],
+        "rows": [
+          [
+            4
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "2,4,1,3"
+        ],
+        [
+          "3,1,4,2"
+        ]
+      ]
+    ]
+  },
+  "II-05": {
+    "id": "II-05",
+    "title": "Add the Numbers Up",
+    "inputs": [
+      {
+        "headers": [
+          "n"
+        ],
+        "rows": [
+          [
+            3
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "123",
+          123
+        ],
+        [
+          "1+2+3",
+          6
+        ],
+        [
+          "1+2-3",
+          0
+        ],
+        [
+          "1+23",
+          24
+        ],
+        [
+          "1-2+3",
+          2
+        ],
+        [
+          "1-2-3",
+          -4
+        ],
+        [
+          "1-23",
+          -22
+        ],
+        [
+          "12+3",
+          15
+        ],
+        [
+          "12-3",
+          9
+        ]
+      ]
+    ]
+  },
+  "II-06": {
+    "id": "II-06",
+    "title": "Permutations of 0 and 1",
+    "inputs": [
+      {
+        "headers": [
+          "n"
+        ],
+        "rows": [
+          [
+            3
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "000"
+        ],
+        [
+          "001"
+        ],
+        [
+          "010"
+        ],
+        [
+          "011"
+        ],
+        [
+          "100"
+        ],
+        [
+          "101"
+        ],
+        [
+          "110"
+        ],
+        [
+          "111"
+        ]
+      ]
+    ]
+  },
+  "II-07": {
+    "id": "II-07",
+    "title": "Permutations 1 through n",
+    "inputs": [
+      {
+        "headers": [
+          "n",
+          "k"
+        ],
+        "rows": [
+          [
+            4,
+            3
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          "1,2,3"
+        ],
+        [
+          "1,2,4"
+        ],
+        [
+          "1,3,2"
+        ],
+        [
+          "1,3,4"
+        ],
+        [
+          "1,4,2"
+        ],
+        [
+          "1,4,3"
+        ],
+        [
+          "2,1,3"
+        ],
+        [
+          "2,1,4"
+        ],
+        [
+          "2,3,1"
+        ],
+        [
+          "2,3,4"
+        ],
+        [
+          "2,4,1"
+        ],
+        [
+          "2,4,3"
+        ],
+        [
+          "3,1,2"
+        ],
+        [
+          "3,1,4"
+        ],
+        [
+          "3,2,1"
+        ],
+        [
+          "3,2,4"
+        ],
+        [
+          "3,4,1"
+        ],
+        [
+          "3,4,2"
+        ],
+        [
+          "4,1,2"
+        ],
+        [
+          "4,1,3"
+        ],
+        [
+          "4,2,1"
+        ],
+        [
+          "4,2,3"
+        ],
+        [
+          "4,3,1"
+        ],
+        [
+          "4,3,2"
+        ]
+      ]
+    ]
+  },
+  "II-08": {
+    "id": "II-08",
+    "title": "Four Vehicles Problem",
+    "inputs": [
+      {
+        "headers": [
+          "adults"
+        ],
+        "rows": [
+          [
+            5
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-09": {
+    "id": "II-09",
+    "title": "Find the Spaces",
+    "inputs": [
+      {
+        "headers": [
+          "statement"
+        ],
+        "rows": [
+          [
+            "SELECT EmpID FROM Emps;"
+          ],
+          [
+            "SELECT * FROM Trans;"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          1,
+          "SELECT EmpID FROM Emps;",
+          1,
+          7,
+          "SELECT",
+          3
+        ],
+        [
+          2,
+          1,
+          "SELECT EmpID FROM Emps;",
+          8,
+          13,
+          "EmpID",
+          3
+        ],
+        [
+          3,
+          1,
+          "SELECT EmpID FROM Emps;",
+          14,
+          18,
+          "FROM",
+          3
+        ],
+        [
+          4,
+          1,
+          "SELECT EmpID FROM Emps;",
+          19,
+          null,
+          "Emps",
+          3
+        ],
+        [
+          1,
+          2,
+          "SELECT * FROM Trans;",
+          1,
+          7,
+          "SELECT",
+          3
+        ],
+        [
+          2,
+          2,
+          "SELECT * FROM Trans;",
+          8,
+          9,
+          "*",
+          3
+        ],
+        [
+          3,
+          2,
+          "SELECT * FROM Trans;",
+          10,
+          14,
+          "FROM",
+          3
+        ],
+        [
+          4,
+          2,
+          "SELECT * FROM Trans;",
+          15,
+          null,
+          "Trans",
+          3
+        ]
+      ]
+    ]
+  },
+  "II-10": {
+    "id": "II-10",
+    "title": "Seating Chart",
+    "inputs": [
+      {
+        "headers": [
+          "seat_number"
+        ],
+        "rows": [
+          [
+            7
+          ],
+          [
+            13
+          ],
+          [
+            14
+          ],
+          [
+            15
+          ],
+          [
+            27
+          ],
+          [
+            28
+          ],
+          [
+            29
+          ],
+          [
+            30
+          ],
+          [
+            31
+          ],
+          [
+            32
+          ],
+          [
+            33
+          ],
+          [
+            34
+          ],
+          [
+            35
+          ],
+          [
+            52
+          ],
+          [
+            53
+          ],
+          [
+            54
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          12
+        ],
+        [
+          16,
+          26
+        ],
+        [
+          36,
+          51
+        ]
+      ],
+      [
+        [
+          38
+        ]
+      ],
+      [
+        [
+          "Even Numbers",
+          8
+        ],
+        [
+          "Odd Numbers",
+          9
+        ]
+      ]
+    ]
+  },
+  "II-11": {
+    "id": "II-11",
+    "title": "Count the Groupings",
+    "inputs": [
+      {
+        "headers": [
+          "step_number",
+          "status"
+        ],
+        "rows": [
+          [
+            1,
+            "Passed"
+          ],
+          [
+            2,
+            "Passed"
+          ],
+          [
+            3,
+            "Passed"
+          ],
+          [
+            4,
+            "Passed"
+          ],
+          [
+            5,
+            "Failed"
+          ],
+          [
+            6,
+            "Failed"
+          ],
+          [
+            7,
+            "Failed"
+          ],
+          [
+            8,
+            "Failed"
+          ],
+          [
+            9,
+            "Failed"
+          ],
+          [
+            10,
+            "Passed"
+          ],
+          [
+            11,
+            "Passed"
+          ],
+          [
+            12,
+            "Passed"
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          4,
+          "Passed",
+          4
+        ],
+        [
+          5,
+          9,
+          "Failed",
+          5
+        ],
+        [
+          10,
+          12,
+          "Passed",
+          3
+        ]
+      ]
+    ]
+  },
+  "II-12": {
+    "id": "II-12",
+    "title": "Double or Add 1",
+    "inputs": [
+      {
+        "headers": [
+          "stop"
+        ],
+        "rows": [
+          [
+            110
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-13": {
+    "id": "II-13",
+    "title": "Pascal’s Triangle",
+    "inputs": [
+      {
+        "headers": [
+          "row",
+          "col"
+        ],
+        "rows": [
+          [
+            5,
+            2
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-14": {
+    "id": "II-14",
+    "title": "Josephus Problem",
+    "inputs": [
+      {
+        "headers": [
+          "n",
+          "k"
+        ],
+        "rows": [
+          [
+            7,
+            3
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-15": {
+    "id": "II-15",
+    "title": "High-Low Card Game",
+    "inputs": [
+      {
+        "headers": [
+          "seed"
+        ],
+        "rows": [
+          [
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-16": {
+    "id": "II-16",
+    "title": "Monty Hall Simulation",
+    "inputs": [
+      {
+        "headers": [
+          "trials",
+          "seed"
+        ],
+        "rows": [
+          [
+            10000,
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-17": {
+    "id": "II-17",
+    "title": "Dice Roll Game",
+    "inputs": [
+      {
+        "headers": [
+          "trials",
+          "target",
+          "seed"
+        ],
+        "rows": [
+          [
+            10000,
+            100,
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-18": {
+    "id": "II-18",
+    "title": "The Birthday Problem",
+    "inputs": [
+      {
+        "headers": [
+          "trials",
+          "people",
+          "seed"
+        ],
+        "rows": [
+          [
+            10000,
+            23,
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-19": {
+    "id": "II-19",
+    "title": "Random Walk",
+    "inputs": [
+      {
+        "headers": [
+          "trials",
+          "people",
+          "seed"
+        ],
+        "rows": [
+          [
+            10000,
+            8,
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-20": {
+    "id": "II-20",
+    "title": "Markov Chain",
+    "inputs": [
+      {
+        "headers": [
+          "days",
+          "seed"
+        ],
+        "rows": [
+          [
+            100000,
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-21": {
+    "id": "II-21",
+    "title": "100 Prisoners Riddle",
+    "inputs": [
+      {
+        "headers": [
+          "trials",
+          "prisoners",
+          "seed"
+        ],
+        "rows": [
+          [
+            10000,
+            100,
+            20261121
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  },
+  "II-22": {
+    "id": "II-22",
+    "title": "Non-Overlapping Sets",
+    "inputs": [
+      {
+        "headers": [
+          "order_id",
+          "line_item",
+          "cost"
+        ],
+        "rows": [
+          [
+            1,
+            1,
+            9
+          ],
+          [
+            1,
+            2,
+            15
+          ],
+          [
+            1,
+            3,
+            7
+          ],
+          [
+            1,
+            4,
+            3
+          ],
+          [
+            1,
+            5,
+            1
+          ],
+          [
+            1,
+            6,
+            1
+          ],
+          [
+            2,
+            1,
+            10
+          ],
+          [
+            2,
+            2,
+            10
+          ],
+          [
+            2,
+            3,
+            11
+          ],
+          [
+            3,
+            1,
+            3
+          ],
+          [
+            3,
+            2,
+            4
+          ],
+          [
+            4,
+            1,
+            5
+          ],
+          [
+            4,
+            2,
+            6
+          ],
+          [
+            5,
+            1,
+            5
+          ],
+          [
+            5,
+            2,
+            5
+          ],
+          [
+            5,
+            3,
+            5
+          ]
+        ]
+      }
+    ],
+    "expected": [
+      [
+        [
+          1,
+          3,
+          "(1,5),(2),(3,4)"
+        ],
+        [
+          1,
+          3,
+          "(1,6),(2),(3,4)"
+        ],
+        [
+          2,
+          3,
+          "(1),(2),(3)"
+        ],
+        [
+          3,
+          0,
+          null
+        ],
+        [
+          4,
+          1,
+          "(1,2)"
+        ],
+        [
+          5,
+          1,
+          "(1,2)"
+        ],
+        [
+          5,
+          1,
+          "(1,3)"
+        ],
+        [
+          5,
+          1,
+          "(2,3)"
+        ]
+      ]
+    ]
+  },
+  "II-23": {
+    "id": "II-23",
+    "title": "Knight's Tour",
+    "inputs": [
+      {
+        "headers": [
+          "x",
+          "y"
+        ],
+        "rows": [
+          [
+            4,
+            4
+          ]
+        ]
+      }
+    ],
+    "expected": []
+  }
+}

@@ -1,0 +1,9 @@
+WITH a AS(
+SELECT *,sum(weight) OVER(
+ORDER BY line_order ROWS UNBOUNDED PRECEDING) total
+FROM t1)
+SELECT name
+FROM a
+WHERE total<=2000
+ORDER BY line_order DESC
+LIMIT 1;

@@ -1,0 +1,14 @@
+WITH RECURSIVE bit(b) AS(VALUES('0'),('1')),r(s,k) AS(VALUES('',0)
+UNION ALL
+SELECT s||b,k+1
+FROM r
+CROSS
+JOIN bit
+WHERE k<(
+SELECT n
+FROM t1))
+SELECT s
+FROM r
+WHERE k=(
+SELECT n
+FROM t1);

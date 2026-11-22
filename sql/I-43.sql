@@ -1,0 +1,3 @@
+SELECT *,min(quantity) OVER(PARTITION BY customer_id
+ORDER BY order_id ROWS UNBOUNDED PRECEDING)
+FROM t1;

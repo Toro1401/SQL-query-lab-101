@@ -1,0 +1,9 @@
+-- I-61: fixture SQLite, dati dalla traccia; date ISO 8601.
+PRAGMA foreign_keys=ON;
+CREATE TABLE t1 ("attempt_id" INTEGER, "player_id" INTEGER, "score" INTEGER);
+INSERT INTO t1 VALUES (1, 1001, 2);
+INSERT INTO t1 VALUES (2, 1001, 7);
+INSERT INTO t1 VALUES (3, 1001, 8);
+INSERT INTO t1 VALUES (1, 2002, 6);
+INSERT INTO t1 VALUES (2, 2002, 9);
+INSERT INTO t1 VALUES (3, 2002, 7);

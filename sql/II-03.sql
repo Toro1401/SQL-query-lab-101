@@ -1,0 +1,10 @@
+WITH RECURSIVE r(n,s) AS(
+SELECT 1,'1'
+UNION ALL
+SELECT n+1,s||(n+1)
+FROM r
+WHERE n<(
+SELECT n
+FROM t1))
+SELECT s
+FROM r;

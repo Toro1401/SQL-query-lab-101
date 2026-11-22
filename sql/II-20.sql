@@ -1,0 +1,11 @@
+WITH RECURSIVE r(day,rain) AS(VALUES(1,0)
+UNION ALL
+SELECT day+1,CASE WHEN rnd((
+SELECT seed
+FROM t1)+day)%100<CASE rain WHEN 1 THEN 70 ELSE 50 END THEN 1 ELSE 0 END
+FROM r
+WHERE day<(
+SELECT days
+FROM t1))
+SELECT count(*),sum(rain),avg(rain)
+FROM r;

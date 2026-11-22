@@ -1,0 +1,8 @@
+-- I-13: fixture SQLite, dati dalla traccia; date ISO 8601.
+PRAGMA foreign_keys=ON;
+CREATE TABLE t1 ("date" TEXT, "quantity_adjustment" INTEGER);
+INSERT INTO t1 VALUES ('2018-07-01', 100);
+INSERT INTO t1 VALUES ('2018-07-02', 75);
+INSERT INTO t1 VALUES ('2018-07-03', -150);
+INSERT INTO t1 VALUES ('2018-07-04', 50);
+INSERT INTO t1 VALUES ('2018-07-05', -100);

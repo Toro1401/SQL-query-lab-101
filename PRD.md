@@ -1,22 +1,29 @@
 # SQL Practice Workbook · PRD
 
-The workbook gives a Data Analyst candidate a place to practice SQL and show how each query was designed and verified. A reviewer should be able to see the problem, follow the reasoning, and reproduce a completed example.
+Il progetto raccoglie 101 esercizi per studiare SQL e rendere riproducibili le soluzioni. Un lettore deve poter identificare la traccia, ricreare i dati, eseguire la query e controllarne metodo e risultati.
 
-## Initial version
+## Versione compilata
 
-- A [workbook](WORKBOOK.md) with 78 entries in Part I and 23 in Part II, using the source numbering and links pinned to a single revision.
-- Every entry records status, engine and version, query, result and verification, method and assumptions, and edge cases or trade-offs.
-- Part I links directly to the relevant setup SQL. Part II uses the exercise prompt as the starting point.
-- The [README](README.md) explains how to use the workbook and includes the proposed GitHub About description.
+- 78 esercizi nella Parte I e 23 nella Parte II, mantenendo ID e riferimenti della versione iniziale.
+- Una soluzione SQLite, metodologia e ipotesi esplicite per ogni scheda.
+- Fixture locali e query eseguibili, senza dipendenze di rete.
+- Stato Verified solo dopo esecuzione del campione e di un caso aggiuntivo o controllo negativo.
+- Report con risultati integrali, versione database e timestamp, riproducibile con `node verify.cjs`.
+- Correzioni motivate quando l'output della fonte contraddice dati o regole.
 
-## Acceptance criteria for a completed entry
+## Criteri di accettazione
 
-1. A reader can identify the exercise and the SQL engine and version.
-2. The input or setup needed to reproduce the query is identified.
-3. The query runs and its output matches the expected result or the stated acceptance check.
-4. The explanation describes the approach, relevant assumptions, and one tested edge case or limitation.
-5. The status reads **Verified** after those checks are recorded.
+1. Ogni esercizio identifica ID, traccia, SQLite 3.53.0 e dati necessari.
+2. I file setup ricreano i dati in un database isolato; i file SQL coincidono con le query nel quaderno.
+3. Tutte le righe sono confrontate con i risultati attesi, incluse le molteplicità. DDL e problemi aperti hanno controlli espliciti.
+4. Ogni scheda spiega significato della riga, ordine dei dati, ipotesi e almeno un caso aggiuntivo eseguito.
+5. Le simulazioni hanno parametri e semi riproducibili, confronto con probabilità teoriche quando pertinente e verifica mediante algoritmo indipendente.
+6. Stato corrente misurato: 101/101 PASS nell'ambiente indicato; adattamenti I-30/I-51 e differenze dalla fonte dichiarati.
 
-## Future work
+## Limiti e provenienza
 
-Add personally written solutions as exercises are completed. Highlight a small selection once the entries have been verified, so a reviewer can find representative examples quickly.
+Soluzioni redatte dall'assistente, senza consultare le soluzioni ufficiali. Verified non equivale a una prova su ogni input né a una certificazione SQL Server. I riferimenti alle tracce restano fissati alla revisione originaria. Il quaderno e i file del progetto contengono quanto serve per ripetere le verifiche.
+
+## Sviluppi futuri
+
+Portare le query su SQL Server con verifiche native delle funzioni specifiche; ampliare i casi limite; selezionare esercizi rappresentativi dopo revisione e comprensione personale.

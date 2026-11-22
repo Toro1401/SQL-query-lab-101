@@ -1,0 +1,503 @@
+{
+  "I-01": {
+    "method": "Il FULL JOIN restituisce gli articoli comuni e quelli presenti in un solo carrello. Se un articolo compare più volte, la join restituisce tutte le corrispondenze.",
+    "edge": "INSERT INTO t1 VALUES ('Only A');",
+    "edgeDescription": "Aggiungendo Only A al primo carrello compare una sola riga per quell’articolo, con cart2 a NULL."
+  },
+  "I-02": {
+    "method": "La ricorsione parte dal CEO a profondità zero e include i dipendenti che si possono raggiungere da lui. Il controllo sul percorso evita i cicli ed esclude i dipendenti scollegati dalla gerarchia.",
+    "edge": "INSERT INTO t1 VALUES (7007,9999,'Orphan');",
+    "edgeDescription": "Il dipendente 7007 fa riferimento a un responsabile assente, quindi il risultato rimane identico."
+  },
+  "I-03": {
+    "method": "La chiave primaria ammette una riga per dipendente e anno solare, usato come anno fiscale. I vincoli verificano le date e la paga, espressa in centesimi interi. Per rilevare anni mancanti servirebbe un controllo a parte.",
+    "edgeDescription": "I vincoli rifiutano un secondo record per lo stesso anno e dipendente, un inizio ad anno avviato, una paga negativa e un ID NULL."
+  },
+  "I-04": {
+    "method": "Ogni riga rappresenta un ordine in TX di un cliente che ha fatto almeno un ordine in CA. EXISTS controlla se l’ordine in CA esiste senza duplicare quelli in TX.",
+    "edge": "INSERT INTO t1 VALUES (1001,9,'CA',10);",
+    "edgeDescription": "Un secondo ordine in CA per il cliente 1001 non aggiunge righe al risultato."
+  },
+  "I-05": {
+    "method": "L’aggregazione condizionale raccoglie i tipi di numero in una riga per cliente. Se un tipo compare più volte, la query prende il massimo lessicografico. In un’applicazione reale va concordato quale tenere.",
+    "edge": "INSERT INTO t1 VALUES (4004,'Home','555-000-0000');",
+    "edgeDescription": "Per il nuovo cliente, che ha solo un numero Home, Cellular e Work rimangono NULL."
+  },
+  "I-06": {
+    "method": "Un workflow è parziale quando il numero di date di completamento non NULL è maggiore di zero e minore del totale dei passaggi. Due conteggi bastano e soddisfano anche il vincolo del bonus su COUNT.",
+    "edge": "INSERT INTO t1 VALUES ('Echo',1,NULL);",
+    "edgeDescription": "Echo ha un solo passaggio senza data di completamento. Rimane fuori dai workflow parziali."
+  },
+  "I-07": {
+    "method": "La query restituisce chi possiede tutte le competenze richieste. Il confronto riguarda l’insieme delle competenze, quindi ripetere un requisito non rende più restrittiva la selezione.",
+    "edge": "INSERT INTO t2 VALUES ('Geologist');",
+    "edgeDescription": "Aggiungere di nuovo Geologist ai requisiti lascia invariato l’elenco dei candidati."
+  },
+  "I-08": {
+    "method": "Per ogni workflow si sommano tre flag binari. Se manca un flag, il totale rimane NULL perché il dato è sconosciuto.",
+    "edge": "INSERT INTO t1 VALUES ('Echo',1,1,1);",
+    "edgeDescription": "Con tutti e tre i flag positivi, Passed vale 3."
+  },
+  "I-09": {
+    "method": "La query confronta le licenze in entrambe le direzioni. Restituisce una riga per coppia orientata quando nessuno dei due ha licenze che mancano all’altro.",
+    "edge": "INSERT INTO t1 VALUES (1001,'Class A');",
+    "edgeDescription": "Ripetere Class A per il dipendente 1001 non cambia le coppie restituite."
+  },
+  "I-10": {
+    "method": "La riga riporta la media con precisione reale, la mediana e l’ampiezza tra massimo e minimo. In caso di parità per la moda si prende il valore più piccolo.",
+    "edge": "DELETE FROM t1; INSERT INTO t1 VALUES (1),(2),(3),(4);",
+    "edgeDescription": "Con il campione 1, 2, 3 e 4, media e mediana valgono 2.5, la moda scelta è 1 e l’ampiezza è 3."
+  },
+  "I-11": {
+    "method": "Ogni riga è una permutazione di tutti gli elementi. Il numero di posizioni deriva dai dati e gli elementi devono essere distinti e privi di virgole.",
+    "edge": "INSERT INTO t1 VALUES ('D');",
+    "edgeDescription": "Con l’aggiunta di D si ottengono 24 permutazioni distinte, ciascuna di 4 elementi."
+  },
+  "I-12": {
+    "method": "Per ciascun workflow si calcola la media dei tempi tra eventi consecutivi. Il risultato è troncato all’intero come nella fonte.",
+    "edge": "INSERT INTO t1 VALUES ('Single','2018-06-01');",
+    "edgeDescription": "Con un solo evento non ci sono intervalli da mediare, quindi il risultato è NULL."
+  },
+  "I-13": {
+    "method": "Il saldo parte da zero e somma un movimento alla volta. La finestra ROWS segue la data e usa rowid quando due date coincidono. Sui dati reali userei un MovementID esplicito per fissare questo ordine.",
+    "edge": "INSERT INTO t1 VALUES ('2018-07-02',-10);",
+    "edgeDescription": "Inserendo un movimento da -10 subito dopo quello da +75 del 2 luglio, i saldi diventano 100, 175, 165, 15, 65 e -35."
+  },
+  "I-14": {
+    "method": "La query assegna uno stato per workflow. Uno stato uniforme si conserva. Se gli stati non coincidono, prevale Indeterminate in presenza di un errore, altrimenti il workflow risulta in esecuzione. Gli stati sono non NULL.",
+    "edge": "INSERT INTO t1 VALUES ('Foxtrot',1,'Error'); INSERT INTO t1 VALUES ('Foxtrot',2,'Running');",
+    "edgeDescription": "Un workflow con Error e Running restituisce Indeterminate."
+  },
+  "I-15": {
+    "method": "La query concatena i frammenti nell’ordine dato da Sequence, che deve essere univoco.",
+    "edge": "INSERT INTO t1 VALUES (10,';');",
+    "edgeDescription": "Il frammento aggiunto finisce in coda, separato da uno spazio."
+  },
+  "I-16": {
+    "method": "Prima di sommare i punteggi, la query mette i due estremi in un ordine comune. In questo modo ciascuna coppia compare una volta.",
+    "edge": "INSERT INTO t1 VALUES (2002,1001,10);",
+    "edgeDescription": "Aggiungere la coppia inversa aumenta il totale di 10 e lascia invariato il numero di coppie."
+  },
+  "I-17": {
+    "method": "La query produce una riga per unità di prodotto. Espande le quantità intere positive e salta lo zero.",
+    "edge": "INSERT INTO t1 VALUES ('Zero',0);",
+    "edgeDescription": "Il prodotto Zero ha quantità 0, quindi non aggiunge righe."
+  },
+  "I-18": {
+    "method": "La query restituisce gli intervalli dei posti mancanti, il numero di posti liberi da 1 al posto massimo e i conteggi dei posti occupati pari e dispari.",
+    "edge": "INSERT INTO t1 VALUES (1);",
+    "edgeDescription": "Occupando il posto 1, il primo intervallo libero va da 2 a 6. Rimangono 37 posti liberi e quelli dispari occupati salgono a 10."
+  },
+  "I-19": {
+    "method": "Il massimo cumulativo delle date di fine permette di unire gli intervalli sovrapposti, anche quando uno contiene interamente l’altro. Due intervalli solo adiacenti restano distinti.",
+    "edge": "INSERT INTO t1 VALUES ('2018-01-02','2018-01-03');",
+    "edgeDescription": "L’intervallo aggiunto dal 2 al 3 gennaio 2018 è già coperto. L’unione resta invariata."
+  },
+  "I-20": {
+    "method": "Per ogni prodotto si prende il prezzo più recente disponibile al 2018-12-31, la data di riferimento della fonte. A parità di data conta rowid.",
+    "edge": "INSERT INTO t1 VALUES (1001,'2099-01-01',99);",
+    "edgeDescription": "Il prezzo del 2099-01-01 arriva dopo la data di riferimento e non modifica il risultato."
+  },
+  "I-21": {
+    "method": "In ogni stato selezionato, la media delle medie mensili supera 100 per ciascun cliente. Il calcolo salta i mesi senza ordini. TX rispetta questo criterio anche se il cliente 1001 ha singoli mesi con media esattamente pari a 100.",
+    "edge": "INSERT INTO t1 VALUES (14,9999,'2018-01-01',0,'TX');",
+    "edgeDescription": "Un nuovo cliente TX con media zero fa uscire l’intero stato dal risultato."
+  },
+  "I-22": {
+    "method": "La query conta quante volte compare ciascun messaggio in ogni workflow. Per ogni messaggio restituisce tutti i workflow al primo posto.",
+    "edge": "INSERT INTO t1 VALUES ('Tie','Status Complete',8);",
+    "edgeDescription": "Con una parità per Status Complete compaiono sia Alpha sia Tie."
+  },
+  "I-23": {
+    "method": "La query assegna ciascun giocatore a una di due metà bilanciate. Se il numero di giocatori è dispari, la prima metà ne contiene uno in più. A pari punteggio decide l’ID.",
+    "edge": "INSERT INTO t1 VALUES (6006,9432);",
+    "edgeDescription": "Con sei giocatori ogni metà ne contiene tre. Chi ha lo stesso punteggio viene ordinato per ID."
+  },
+  "I-24": {
+    "method": "La pagina contiene gli ordini dal quinto al decimo nell’ordinamento per OrderID univoco. Le posizioni sono quelle nella lista ordinata e possono differire dagli ID.",
+    "edge": "DELETE FROM t1 WHERE order_id=1;",
+    "edgeDescription": "Dopo aver rimosso il primo ordine, le stesse posizioni contengono gli ID da 6 a 11."
+  },
+  "I-25": {
+    "method": "Per ciascun cliente si contano gli ordini per fornitore, uno per riga, a prescindere dalla quantità nel campo Count. Si conservano tutti i fornitori a pari merito.",
+    "edge": "INSERT INTO t1 VALUES (7,1001,1,'ACME');",
+    "edgeDescription": "Con due ordini a testa per il cliente 1001, la query restituisce entrambi i fornitori."
+  },
+  "I-26": {
+    "method": "La riga riassume il 2018 e i due anni precedenti. Ogni colonna somma tutte le vendite dell’anno e vale zero se mancano righe.",
+    "edge": "INSERT INTO t1 VALUES (2015,999);",
+    "edgeDescription": "La vendita aggiunta al 2015 è fuori dal periodo e non cambia nessuna delle tre somme."
+  },
+  "I-27": {
+    "method": "La cancellazione conserva, per ciascun valore, la riga con rowid più basso. Eseguirla una seconda volta lascia i dati invariati.",
+    "edge": "INSERT INTO t1 VALUES (4);",
+    "edgeDescription": "Aggiungendo un altro 4 prima della cancellazione, resta comunque una sola copia dello stesso valore."
+  },
+  "I-28": {
+    "method": "Per ogni posizione la query usa il valore corrente se è noto, altrimenti cerca l’ultimo valore noto precedente.",
+    "edge": "INSERT INTO t1 VALUES (0,NULL);",
+    "edgeDescription": "Un NULL all’inizio rimane NULL perché non c’è un valore precedente da usare."
+  },
+  "I-29": {
+    "method": "Un gruppo inizia quando lo stato cambia nel percorso ordinato per StepNumber. Un salto nella numerazione, da solo, non spezza il gruppo.",
+    "edge": "INSERT INTO t1 VALUES (13,'Failed');",
+    "edgeDescription": "Aggiungere Failed dopo Passed apre un quarto gruppo, di lunghezza 1."
+  },
+  "I-30": {
+    "method": "La vista SQLite espone una colonna sentinella che fa fallire SELECT *. Le colonne nominate esplicitamente restano leggibili. Il runner registra forbid_star() per mostrare il comportamento della vista. Una vista così costruita non fornisce un controllo di accesso.",
+    "edgeDescription": "La selezione delle due colonne esplicite riesce. SELECT * restituisce Explicit columns required."
+  },
+  "I-31": {
+    "method": "Le tre query cercano il secondo valore distinto. DENSE_RANK assegna lo stesso rango ai duplicati. Con meno di due valori, l’aggregazione restituisce NULL e le altre query non producono righe. Nel bonus stipendi il secondo valore distinto è 150000, anche con due primi e due secondi posti.",
+    "edge": "INSERT INTO t1 VALUES (3763);",
+    "edgeDescription": "Una copia in più del valore massimo 3763 lascia invariato il secondo valore distinto."
+  },
+  "I-32": {
+    "method": "Per ogni professione si restituiscono gli ID con più e meno missioni. Un pareggio si risolve scegliendo l’ID più basso.",
+    "edge": "INSERT INTO t1 VALUES (9999,'Astrogator',17);",
+    "edgeDescription": "Un Astrogator che pareggia a 17 missioni con ID 9999 non cambia il risultato."
+  },
+  "I-33": {
+    "method": "Poiché la produzione è parallela, il tempo necessario è quello della lavorazione più lenta. La query valuta ogni ordine e assume che l’assemblaggio non richieda altro tempo.",
+    "edge": "INSERT INTO t1 VALUES (4,'SunRay',3);",
+    "edgeDescription": "Se il tempo richiesto coincide con il massimo ammesso, l’ordine è On Schedule."
+  },
+  "I-34": {
+    "method": "La query esclude solo la combinazione cliente 1001 e importo 50. IS NOT permette di conservare le righe con valori NULL che non corrispondono alla combinazione.",
+    "edge": "INSERT INTO t1 VALUES (5,NULL,50);",
+    "edgeDescription": "Un ordine da 50 con cliente NULL rimane nel risultato."
+  },
+  "I-35": {
+    "method": "La query include un rappresentante se ha venduto in una sola categoria distinta. Più vendite nella stessa categoria contano come un’unica categoria.",
+    "edge": "INSERT INTO t1 VALUES (9,3003,1,'Domestic');",
+    "edgeDescription": "Un’altra vendita Domestic del rappresentante 3003 lascia invariato l’elenco."
+  },
+  "I-36": {
+    "method": "Si enumerano i percorsi semplici da Austin a Des Moines. La lista visited impedisce di tornare in una città già visitata. Sui dati di prova il percorso minimo costa 500 e quello massimo 600.",
+    "edge": "INSERT INTO t1 VALUES (5,'Dallas','Austin',1);",
+    "edgeDescription": "Aggiungere il collegamento da Dallas ad Austin non crea percorsi ammessi, perché farebbe tornare al punto di partenza."
+  },
+  "I-37": {
+    "method": "A ogni ordine si assegna il rango della combinazione dei suoi tre attributi. Le chiavi numeriche dipendono dalle combinazioni presenti al momento del calcolo.",
+    "edge": "INSERT INTO t1 VALUES (5,'ACME',123,'ABC',1);",
+    "edgeDescription": "Una riga con una combinazione già nota riceve la stessa chiave, 1."
+  },
+  "I-38": {
+    "method": "Il report contiene una riga per regione e distributore. Per ogni coppia somma le vendite o mostra zero. I dati non specificano date, quindi si usa un unico periodo implicito.",
+    "edge": "INSERT INTO t1 VALUES ('North','ACE',5);",
+    "edgeDescription": "Una vendita aggiuntiva porta ACE/North a 15. Le coppie possibili restano 12."
+  },
+  "I-39": {
+    "method": "La query esclude 1 e i numeri negativi. Per gli altri candidati cerca divisori fino alla radice quadrata e restituisce i primi.",
+    "edge": "INSERT INTO t1 VALUES (49);",
+    "edgeDescription": "Aggiungere 49 non cambia il risultato perché è divisibile per 7."
+  },
+  "I-40": {
+    "method": "Le città note seguono l’ordine esplicito della traccia. Le nuove città vengono dopo, in ordine alfabetico.",
+    "edge": "INSERT INTO t1 VALUES ('Boston');",
+    "edgeDescription": "Boston non è nell’ordine predefinito, quindi finisce in coda."
+  },
+  "I-41": {
+    "method": "La query trova la componente di ciascun nodo nel grafo non orientato e la identifica con il nome più piccolo. UNION elimina le visite duplicate, così la ricerca termina anche se trova un ciclo.",
+    "edge": "INSERT INTO t1 VALUES ('Emma','Anne');",
+    "edgeDescription": "Il collegamento da Emma ad Anne chiude un percorso già raggiungibile. Le componenti restano le stesse."
+  },
+  "I-42": {
+    "method": "Per ogni coppia di amici si salvano i nomi in un ordine comune. La query conta i vicini condivisi nel grafo non orientato e ignora le amicizie duplicate.",
+    "edge": "INSERT INTO t1 VALUES ('Mary','Jason');",
+    "edgeDescription": "Aggiungere Mary e Jason nell’altro ordine non cambia i conteggi."
+  },
+  "I-43": {
+    "method": "Per ogni ordine si prende il minimo visto fin lì per lo stesso cliente. La finestra assume che OrderID sia univoco all’interno del cliente.",
+    "edge": "INSERT INTO t1 VALUES (5,1001,1);",
+    "edgeDescription": "Un nuovo minimo di 1 per il cliente 1001 aggiorna solo la finestra di quel cliente."
+  },
+  "I-44": {
+    "method": "Ogni versione del cliente copre un intervallo di giorni inclusivo. Le date iniziali devono essere univoche per cliente. Una versione termina il giorno prima della successiva e l’ultima rimane aperta.",
+    "edge": "INSERT INTO t1 VALUES (3003,'2021-01-01',0);",
+    "edgeDescription": "L’unica versione del nuovo cliente termina al 9999-12-31, usato per rappresentare l’intervallo aperto."
+  },
+  "I-45": {
+    "method": "La query segnala la versione precedente quando il suo intervallo include l’inizio di una versione successiva. Gli estremi sono inclusivi. Per seguire la convenzione della fonte si segnala solo la versione precedente.",
+    "edge": "INSERT INTO t1 VALUES (3003,'2021-01-01','2021-01-02',0);",
+    "edgeDescription": "La versione aggiunta per il cliente 3003 non si sovrappone ad altre. L’elenco rimane invariato."
+  },
+  "I-46": {
+    "method": "Entrambe le formulazioni restituiscono i conti che non hanno mai avuto un saldo positivo. Zero è ammesso. Un saldo NULL esclude il conto, perché la storia è incompleta.",
+    "edge": "INSERT INTO t1 VALUES (4004,0);",
+    "edgeDescription": "Entrambe le formulazioni includono un conto con saldo sempre pari a zero."
+  },
+  "I-47": {
+    "method": "I confini di turni e attività dividono la giornata in segmenti semiaperti. Le attività si ritagliano sui limiti del turno. Se due attività si sovrappongono, prevale il rowid più basso e la durata si conta una volta sola.",
+    "edge": "DELETE FROM t2 WHERE schedule_id='B';",
+    "edgeDescription": "Il turno B, senza attività, produce un solo segmento Work di 120 minuti."
+  },
+  "I-48": {
+    "method": "Si include un venditore solo se ha effettuato vendite in ciascuno dei tre anni. Il periodo termina nel 2021 per riprodurre i dati della fonte indipendentemente dalla data di esecuzione.",
+    "edge": "INSERT INTO t1 VALUES (2002,2019);",
+    "edgeDescription": "Dopo aver aggiunto una vendita del 2019 per il venditore 2002, si qualificano 2002 e 4004."
+  },
+  "I-49": {
+    "method": "Si sommano i pesi positivi nell’ordine di ingresso e si restituisce l’ultimo atleta per cui il totale è al massimo 2000. La coda non consente di saltare persone.",
+    "edge": "UPDATE t1 SET weight=2001 WHERE line_order=1;",
+    "edgeDescription": "Se il primo atleta supera il limite, non entra nessuno."
+  },
+  "I-50": {
+    "method": "La ricorsione aggiorna il conteggio di ball e strike dopo ogni lancio valido. Un foul non aumenta gli strike oltre due. Il turno termina a quattro ball, tre strike o quando la palla è in gioco.",
+    "edge": "INSERT INTO t1 VALUES (1001,6,'Ball');",
+    "edgeDescription": "Il sesto lancio di 1001 arriva dopo la fine del turno e non cambia il risultato."
+  },
+  "I-51": {
+    "method": "Questo adattamento SQLite di HASHBYTES e CHECKSUM usa SHA-256 e CRC32, registrati dal runner. L’array JSON canonico distingue NULL dalle stringhe. CRC32 è un algoritmo diverso da CHECKSUM di SQL Server e può produrre collisioni. Il vincolo UNIQUE sulla chiave naturale resta necessario anche se si usa un hash.",
+    "edge": "INSERT INTO t1 VALUES (4004,NULL);",
+    "edgeDescription": "La serializzazione distingue NULL dalle stringhe e SHA-256 restituisce 64 cifre esadecimali."
+  },
+  "I-52": {
+    "method": "Si conserva un numero per cliente. CHECK impone la lunghezza e la posizione esatta delle cifre ASCII. NOT NULL rende obbligatorio il numero.",
+    "edgeDescription": "I vincoli rifiutano un numero corto, lettere al posto delle cifre, una cifra di troppo e NULL."
+  },
+  "I-53": {
+    "method": "Si restituisce una riga per persona. Le coppie reciproche sono ordinate per il maggiore dei due identificativi in ordine lessicografico, come richiesto per riprodurre i GroupID della fonte.",
+    "edge": "INSERT INTO t1 VALUES ('Zoe','Zed');",
+    "edgeDescription": "Alla nuova coppia viene assegnato il gruppo 4."
+  },
+  "I-54": {
+    "method": "La query riassume l’incasso in una riga. Ogni biglietto paga 100 se contiene tutti i numeri vincenti e 10 se ne contiene soltanto una parte.",
+    "edge": "INSERT INTO t2 VALUES ('AAA',25);",
+    "edgeDescription": "Il numero 25 aggiunto ad AAA lascia invariato l’incasso."
+  },
+  "I-55": {
+    "method": "Il nome del prodotto è univoco in ciascuna tabella. FULL JOIN permette di distinguere i prodotti assenti dalle quantità diverse. Se entrambe le quantità sono NULL, la query le considera corrispondenti.",
+    "edge": "INSERT INTO t1 VALUES ('Null',NULL); INSERT INTO t2 VALUES ('Null',NULL);",
+    "edgeDescription": "Il prodotto con quantità NULL in entrambe le tabelle risulta corrispondente."
+  },
+  "I-56": {
+    "method": "La ricorsione emette un intero alla volta, da 1 a 10 compresi. La condizione di arresto è nel passo ricorsivo.",
+    "edge": "CREATE TABLE unused(x);",
+    "edgeDescription": "Anche dopo aver creato una tabella estranea, la query produce dieci righe consecutive."
+  },
+  "I-57": {
+    "method": "Ogni token ha una posizione a partire da 1. Il punto e virgola resta nel token e ogni coppia di spazi consecutivi delimita un token vuoto.",
+    "edge": "INSERT INTO t1 VALUES ('A  B');",
+    "edgeDescription": "Due spazi consecutivi tra A e B producono un token vuoto."
+  },
+  "I-58": {
+    "method": "La ricorsione legge le cifre e applica i segni + e - man mano. Ogni espressione produce una riga. La query non esegue il testo come codice e non prevede spazi o parentesi.",
+    "edge": "INSERT INTO t1 VALUES ('10-20+3');",
+    "edgeDescription": "L’espressione 10-20+3 restituisce -7."
+  },
+  "I-59": {
+    "method": "Si eliminano le coppie di parentesi adiacenti finché non se ne trovano più. La stringa è bilanciata se il residuo è vuoto. Il controllo riguarda anche l’ordine e nel caso peggiore ha costo quadratico.",
+    "edge": "INSERT INTO t1 VALUES (10,'([)]');",
+    "edgeDescription": "La stringa ([)] contiene lo stesso numero di aperture e chiusure, ma l’incrocio delle parentesi la rende non bilanciata."
+  },
+  "I-60": {
+    "method": "La query conserva un codice se è associato a un solo prodotto distinto. I codici sono testo, così gli zeri iniziali si conservano.",
+    "edge": "INSERT INTO t1 VALUES ('Alpha','01');",
+    "edgeDescription": "Ripetere il codice 01 per Alpha non introduce un secondo prodotto e lascia invariato il risultato."
+  },
+  "I-61": {
+    "method": "Ogni riga confronta un tentativo con il primo e con l’ultimo punteggio. Per convenzione il primo tentativo ha flag 1. Il miglioramento complessivo richiede che ogni passaggio aumenti il punteggio.",
+    "edge": "INSERT INTO t1 VALUES (4,1001,8);",
+    "edgeDescription": "Se l’ultimo punteggio di 1001 è uguale al precedente, il flag complessivo passa a 0."
+  },
+  "I-62": {
+    "method": "La query abbina auto e barca quando la differenza è almeno 200000. Questa soglia inclusiva riproduce l’output, anche se la traccia usa l’espressione “200000 more”.",
+    "edge": "INSERT INTO t1 VALUES (9,'Boat','Exact',90000);",
+    "edgeDescription": "La Lamborghini da 290000 e la barca da 90000 si abbinano perché la differenza è esattamente 200000."
+  },
+  "I-63": {
+    "method": "L’ordine compare se contiene un solo prodotto e ogni riga ha lo sconto PROMO. Si ammettono righe duplicate. Uno sconto NULL non soddisfa la condizione.",
+    "edge": "INSERT INTO t1 VALUES (3,'Item 1',NULL);",
+    "edgeDescription": "Aggiungere uno sconto NULL all’ordine 3 lo esclude dal risultato."
+  },
+  "I-64": {
+    "method": "Per ciascuna stringa si richiedono due virgolette esatte e più di 10 caratteri al loro interno. La query segnala Error quando trova una sola virgoletta, un caso che la traccia non specifica.",
+    "edge": "INSERT INTO t1 VALUES (7,'\"1234567890\"');",
+    "edgeDescription": "Con esattamente dieci caratteri tra le virgolette, il risultato è False."
+  },
+  "I-65": {
+    "method": "Ogni evento New Listing o Relisted assegna una nuova chiave globale. Gli eventi successivi della stessa casa la ereditano, anche se ci sono eventi di altre case in mezzo. Un evento senza una precedente apertura ha gruppo NULL.",
+    "edge": "INSERT INTO t1 VALUES (10,'Home A','Pending'); INSERT INTO t1 VALUES (11,'Home C','Relisted');",
+    "edgeDescription": "Con gli eventi interlacciati, Home A resta nel gruppo 2 mentre Relisted apre il gruppo 6 per Home C."
+  },
+  "I-66": {
+    "method": "Si ordinano i componenti di ciascun tipo per data e seriale, poi si abbinano quelli nella stessa posizione FIFO. Un kit incompleto compare comunque, con NULL per il pezzo assente.",
+    "edge": "DELETE FROM t1 WHERE serial='I333';",
+    "edgeDescription": "L’ultimo kit resta nel risultato anche con Nut a NULL."
+  },
+  "I-67": {
+    "method": "Si raggruppano i record per data di nascita completa, anno compreso. Si restituiscono le date condivise, con i nomi in ordine alfabetico.",
+    "edge": "INSERT INTO t1 VALUES ('Another','2016-04-15');",
+    "edgeDescription": "La data 2016-04-15 aggiunta per Another non introduce una nuova data condivisa."
+  },
+  "I-68": {
+    "method": "Per ogni squadra si calcola la media iniziale e si rimuove il punteggio più distante. A pari distanza si rimuove quello dell’anno più vecchio. La media residua è troncata come nella fonte.",
+    "edge": "INSERT INTO t1 VALUES ('Single',2020,10);",
+    "edgeDescription": "Una squadra con un solo punteggio resta senza osservazioni dopo la rimozione. Il risultato per le altre squadre resta identico."
+  },
+  "I-69": {
+    "method": "Ogni riga associa un nodo al suo ramo principale. La radice compare in ogni gruppo e l’ordine dei gruppi segue i suoi figli. UNION elimina le duplicazioni.",
+    "edge": "INSERT INTO t1 VALUES ('E','H');",
+    "edgeDescription": "H, figlio di E, finisce nel ramo 1."
+  },
+  "I-70": {
+    "method": "Per famiglia si calcolano la differenza tra età estreme e il salto massimo tra età consecutive. Il riepilogo dei generi segue l’ordine per età e ID. La media è troncata come nella fonte e per un figlio unico i divari sono zero.",
+    "edge": "INSERT INTO t1 VALUES (5005,'I',10,'F');",
+    "edgeDescription": "Per la famiglia con un figlio di 10 anni, la media vale 10 e tutti i divari valgono zero."
+  },
+  "I-71": {
+    "method": "La query produce una riga per assunzione. Il runner attiva le chiavi esterne e i trigger simmetrici impediscono la doppia presenza anche durante un UPDATE. SQLite serializza le scritture.",
+    "edgeDescription": "Il test respinge sei operazioni: inserimenti doppi, inserimenti senza anagrafica e aggiornamenti incrociati nei due sensi."
+  },
+  "I-72": {
+    "method": "Ogni intervento rinnova la garanzia. Per ciascun cliente si ordinano gli interventi per data e ID. Si includono le riparazioni a non più di 30 giorni dalla precedente e si avvia una nuova sequenza dopo un divario più lungo.",
+    "edge": "INSERT INTO t1 VALUES (9009,'B','2023-10-01');",
+    "edgeDescription": "La riparazione a esattamente 30 giorni è inclusa e risulta il primo intervento coperto della nuova sequenza."
+  },
+  "I-73": {
+    "method": "Per ogni passaggio, la query conta gli stati distinti osservati nello stesso workflow fino a quel punto incluso. COUNT DISTINCT ignora NULL.",
+    "edge": "INSERT INTO t1 VALUES (9,'Bravo','Closed');",
+    "edgeDescription": "Con uno stato già visto, il conteggio distinto non aumenta."
+  },
+  "I-74": {
+    "method": "Si ordinano i punteggi in senso decrescente, usando il nome per sciogliere le parità. La query abbina i giocatori vicini in classifica e dispone i nomi in ordine alfabetico in ogni coppia.",
+    "edge": "INSERT INTO t1 VALUES (3,'Solo',100);",
+    "edgeDescription": "Aggiungere Solo come unico giocatore della sua lega non crea una coppia."
+  },
+  "I-75": {
+    "method": "La query ordina le tre dimensioni positive e non NULL di ciascuna scatola. Le scatole che differiscono solo per la rotazione finiscono nello stesso gruppo.",
+    "edge": "INSERT INTO t1 VALUES ('D',25,15,10);",
+    "edgeDescription": "La scatola con le dimensioni di A e B ruotate resta nel gruppo 1."
+  },
+  "I-76": {
+    "method": "Si restituisce una riga per inizio batch. Il primo GO alla riga corrente o successiva ne indica la fine. In sua assenza il termine è NULL. La query esamina il testo senza eseguirlo.",
+    "edge": "INSERT INTO t1 VALUES ('A',7);",
+    "edgeDescription": "Il batch privo di GO ha termine NULL."
+  },
+  "I-77": {
+    "method": "Per ogni lettura NULL si cerca il valore noto più vicino da ciascun lato e si prende il maggiore. Se trova un solo vicino usa quello. Se non ne trova, lascia NULL.",
+    "edge": "INSERT INTO t1 VALUES (0,NULL);",
+    "edgeDescription": "Una lettura NULL all’inizio prende il primo valore noto successivo, 52."
+  },
+  "I-78": {
+    "method": "La query restituisce una riga per stato se la tabella dei codici contiene almeno un record. EXISTS verifica la presenza senza moltiplicare le righe.",
+    "edge": "DELETE FROM t2;",
+    "edgeDescription": "Quando la tabella dei codici è vuota, la query non restituisce stati."
+  },
+  "II-01": {
+    "method": "La query restituisce ogni intero da 1 a n e il suo fattoriale. Fino a 20! il risultato entra in un intero SQLite a 64 bit con segno. Per valori maggiori serve aritmetica a precisione arbitraria.",
+    "edge": "UPDATE t1 SET n=1;",
+    "edgeDescription": "Con n=1 si ottiene solo la riga (1,1)."
+  },
+  "II-02": {
+    "method": "La maschera di bit tiene traccia degli interi da 1 a n già usati. Ogni riga è una permutazione senza ripetizioni. Il numero di righe cresce come n!, quindi funziona per n piccoli.",
+    "edge": "UPDATE t1 SET n=1;",
+    "edgeDescription": "Con n=1 esiste solo la permutazione 1."
+  },
+  "II-03": {
+    "method": "La query emette un prefisso crescente per ogni lunghezza, partendo da 1 e aggiungendo l’intero successivo fino a n. Conserva il risultato come testo per mantenere la concatenazione.",
+    "edge": "UPDATE t1 SET n=1;",
+    "edgeDescription": "Con n=1 si ottiene un solo prefisso, il testo 1."
+  },
+  "II-04": {
+    "method": "Ogni riga è una permutazione in cui due valori adiacenti non differiscono di 1. Con n=4 si riproducono le due righe attese. La traccia usa n=10 solo come esempio.",
+    "edge": "UPDATE t1 SET n=3;",
+    "edgeDescription": "Con n=3 non esiste una permutazione valida."
+  },
+  "II-05": {
+    "method": "Tra le cifre consecutive da 1 a n si può concatenare, sommare o sottrarre. Il dominio è da 1 a 9 e ci sono 3^(n-1) combinazioni. La query costruisce il totale durante la ricerca senza eseguire il testo risultante.",
+    "edge": "UPDATE t1 SET n=1;",
+    "edgeDescription": "Con n=1 non si inseriscono operatori e l’espressione vale 1."
+  },
+  "II-06": {
+    "method": "La query genera una stringa per ogni combinazione di n cifre binarie. Il tipo testo conserva gli zeri iniziali.",
+    "edge": "UPDATE t1 SET n=0;",
+    "edgeDescription": "Con n=0 si ottiene una sola stringa, quella vuota."
+  },
+  "II-07": {
+    "method": "Ogni riga dispone k elementi distinti scelti da 1 a n. La ricorsione si ferma dopo k scelte e sui dati base produce 24 terne.",
+    "edge": "UPDATE t1 SET n=3,k=2;",
+    "edgeDescription": "Con n=3 e k=2 si ottengono tutte le sei coppie ordinate senza ripetizioni."
+  },
+  "II-08": {
+    "method": "Le posizioni da 1 a 4 sono i guidatori di moto, sidecar, golf e auto. La posizione 5 è il passeggero del sidecar, da 6 a 7 quelli del golf e da 8 a 10 quelli dell’auto. Le persone da 1 a 5 sono adulte, le altre sono bambini. Ordinando i passeggeri di ogni veicolo si evitano duplicati: 120 scelte dei guidatori per 60 assegnazioni danno 7200 disposizioni.",
+    "edge": "UPDATE t1 SET adults=3;",
+    "edgeDescription": "Con tre adulti e quattro mezzi da guidare non c’è alcuna disposizione valida."
+  },
+  "II-09": {
+    "method": "Ogni riga riporta un token, la posizione iniziale, lo spazio successivo e il totale degli spazi. L’ultimo token non ha spazio successivo e la fonte rimuove da quel token il punto e virgola.",
+    "edge": "INSERT INTO t1 VALUES ('ONE');",
+    "edgeDescription": "ONE produce un token, nessuno spazio successivo e un totale di zero spazi."
+  },
+  "II-10": {
+    "method": "La query elenca gli intervalli liberi, conta tutti i posti mancanti da 1 al posto massimo e divide gli occupati in pari e dispari.",
+    "edge": "INSERT INTO t1 VALUES (1);",
+    "edgeDescription": "Con il posto 1 occupato il primo intervallo libero va da 2 a 6. Mancano 37 posti e gli occupati dispari sono 10."
+  },
+  "II-11": {
+    "method": "Si leggono i passaggi per StepNumber. Un cambio di stato avvia un gruppo, mentre un salto nel numero del passaggio lascia intatto il gruppo corrente.",
+    "edge": "INSERT INTO t1 VALUES (13,'Failed');",
+    "edgeDescription": "Un Failed aggiunto dopo Passed forma un quarto gruppo di un solo passaggio."
+  },
+  "II-12": {
+    "method": "Ogni riga contiene il numero raggiunto. Si raddoppia finché il risultato è inferiore a 100, poi si aggiunge 1. Poiché la traccia lascia aperta la fine, il setup fissa il limite a 110.",
+    "edge": "UPDATE t1 SET stop=1;",
+    "edgeDescription": "Con limite 1 si ottiene solo il valore iniziale."
+  },
+  "II-13": {
+    "method": "La query calcola un coefficiente binomiale per la riga e la colonna indicate, con indici da zero. La formula moltiplicativa intera restituisce 10 per C(5,2). Gli intermedi devono entrare in un intero a 64 bit con segno.",
+    "edge": "UPDATE t1 SET col=0;",
+    "edgeDescription": "Alla colonna iniziale C(5,0) vale 1."
+  },
+  "II-14": {
+    "method": "Per n=7 si parte dalla persona 1, la si include nel conteggio e si elimina ogni terza persona. La ricorrenza di Josephus usa indici da zero, che si convertono alla numerazione da 1 nel risultato.",
+    "edge": "UPDATE t1 SET n=1;",
+    "edgeDescription": "Con una sola persona il superstite è 1."
+  },
+  "II-15": {
+    "method": "Il mazzo ha 52 carte, quattro semi e ranghi da 2 a 14. Per ciascuna delle 51 previsioni si contano le carte di rango maggiore e minore rimaste. Un’estrazione riproducibile decide quando i conteggi sono pari. Una carta dello stesso rango fa perdere la previsione.",
+    "edge": "UPDATE t1 SET seed=42;",
+    "edgeDescription": "Con seme 42 si controllano le 52 carte uniche. I conteggi residui e tutte le 51 previsioni coincidono con l’implementazione indipendente in JavaScript."
+  },
+  "II-16": {
+    "method": "Un riepilogo conta 10000 prove, le vittorie di entrambe le strategie e le aperture non valide. Il presentatore conosce il premio e apre una porta con una capra. Cambiare porta ha probabilità teorica di circa 2/3: la simulazione permette di confrontare il risultato osservato con quel valore.",
+    "edge": "UPDATE t1 SET trials=1;",
+    "edgeDescription": "Con una sola prova, una strategia vince e l’altra perde. Il presentatore apre una porta valida."
+  },
+  "II-17": {
+    "method": "Il riepilogo conta le partite concluse e riporta media, minimo e massimo dei lanci fisici. Un 6 fa partire i rilanci di penalità, ciascuno dei quali sottrae il numero uscito. Un altro 6 prolunga la penalità. Il punteggio non scende sotto zero e tutte le partite devono terminare prima del limite di 10000 lanci. Questa è l’interpretazione adottata per la regola ambigua.",
+    "edge": "UPDATE t1 SET target=1,trials=100;",
+    "edgeDescription": "Con obiettivo 1 e 100 partite, media, minimo e massimo coincidono con il simulatore JavaScript sulle stesse estrazioni. Tutte le partite terminano."
+  },
+  "II-18": {
+    "method": "La riga riepiloga 10000 gruppi di 23 persone, indicando quanti hanno un compleanno condiviso e con quale frequenza. Le date sono indipendenti e uniformi su 365 giorni, senza anni bisestili o stagionalità. La probabilità teorica è circa 0.5073.",
+    "edge": "UPDATE t1 SET people=1,trials=100;",
+    "edgeDescription": "Con una persona per gruppo, nessuna delle 100 prove ha un compleanno condiviso."
+  },
+  "II-19": {
+    "method": "La query conta le vittorie di ciascun possibile vincitore in 10000 passeggiate circolari. La posizione 0 del presentatore parte come visitata. Ogni prova si ferma quando resta una sola posizione non visitata. Il test verifica il limite dei passi e i sette partecipanti eleggibili hanno frequenze di vittoria simili.",
+    "edge": "UPDATE t1 SET people=2,trials=100;",
+    "edgeDescription": "Con due persone, l’unico partecipante diverso dal presentatore vince tutte le 100 prove."
+  },
+  "II-20": {
+    "method": "La riga mostra il numero di giorni simulati, quanti sono piovosi e la loro quota. La catena da 100000 giorni parte dal sole. La probabilità di pioggia al passo successivo è 0.5 dopo il sole e 0.7 dopo la pioggia. A regime la quota teorica è 5/8, cioè 0.625.",
+    "edge": "UPDATE t1 SET days=1;",
+    "edgeDescription": "Se la simulazione include solo il primo giorno, fissato al sole, i giorni piovosi sono zero."
+  },
+  "II-21": {
+    "method": "Il riepilogo di 10000 permutazioni di 100 scatole conta prove, vittorie della strategia dei cicli, frequenza e numero massimo di passi della decomposizione. Ciascun prigioniero segue il ciclo della propria etichetta. Il gruppo vince se tutti i cicli hanno lunghezza al massimo 50. La probabilità teorica è circa 0.3118: le probabilità dei singoli non si possono moltiplicare come 0.5^100.",
+    "edge": "UPDATE t1 SET trials=100,prisoners=4;",
+    "edgeDescription": "Con quattro prigionieri e 100 prove si confronta il risultato esatto con la decomposizione JavaScript dei cicli, usando un limite di due scatole."
+  },
+  "II-22": {
+    "method": "Per ogni ordine si cercano le partizioni con il maggior numero di gruppi. Ogni gruppo ha uno o due elementi e costo almeno 10. Le maschere assicurano che i gruppi siano disgiunti e si possono lasciare elementi inutilizzati. La ricerca è esponenziale e usa ID interi da 1 a 62. Per l’ordine 5 la tabella attesa ha un gruppo per soluzione, anche se il commento della fonte ne indica due.",
+    "edge": "INSERT INTO t1 VALUES (6,1,9);",
+    "edgeDescription": "Un ordine con un solo elemento di costo 9 ammette zero gruppi e ha combinazione NULL."
+  },
+  "II-23": {
+    "method": "La query prova gli otto spostamenti a L da 4D. Restituisce una riga per mossa che rimane tra 1 e 8 su entrambi gli assi. La traccia richiede le prossime mosse e termina dopo un solo salto.",
+    "edge": "UPDATE t1 SET x=1,y=1;",
+    "edgeDescription": "Dall’angolo 1A rimangono solo 2C e 3B."
+  }
+}

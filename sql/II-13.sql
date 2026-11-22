@@ -1,0 +1,14 @@
+WITH RECURSIVE c(k,v) AS(VALUES(0,1)
+UNION ALL
+SELECT k+1,v*((
+SELECT row
+FROM t1)-k)/(k+1)
+FROM c
+WHERE k<(
+SELECT col
+FROM t1))
+SELECT v
+FROM c
+WHERE k=(
+SELECT col
+FROM t1);

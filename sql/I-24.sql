@@ -1,0 +1,4 @@
+SELECT *
+FROM t1
+ORDER BY order_id
+LIMIT 6 OFFSET 4;

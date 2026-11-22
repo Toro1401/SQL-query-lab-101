@@ -1,0 +1,11 @@
+-- I-04: fixture SQLite, dati dalla traccia; date ISO 8601.
+PRAGMA foreign_keys=ON;
+CREATE TABLE t1 ("customer_id" INTEGER, "order_id" INTEGER, "delivery_state" TEXT, "amount" INTEGER);
+INSERT INTO t1 VALUES (1001, 1, 'CA', 340);
+INSERT INTO t1 VALUES (1001, 2, 'TX', 950);
+INSERT INTO t1 VALUES (1001, 3, 'TX', 670);
+INSERT INTO t1 VALUES (1001, 4, 'TX', 860);
+INSERT INTO t1 VALUES (2002, 5, 'WA', 320);
+INSERT INTO t1 VALUES (3003, 6, 'CA', 650);
+INSERT INTO t1 VALUES (3003, 7, 'CA', 830);
+INSERT INTO t1 VALUES (4004, 8, 'TX', 120);

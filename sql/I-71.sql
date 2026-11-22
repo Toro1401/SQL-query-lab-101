@@ -1,0 +1,11 @@
+CREATE TABLE employees(employee_id INTEGER PRIMARY KEY,name TEXT);
+INSERT INTO employees SELECT * FROM t3;
+CREATE TABLE temporary(employee_id INTEGER PRIMARY KEY REFERENCES employees,department TEXT);
+CREATE TABLE permanent(employee_id INTEGER PRIMARY KEY REFERENCES employees,department TEXT);
+CREATE TRIGGER temp_insert BEFORE INSERT ON temporary WHEN EXISTS(SELECT 1 FROM permanent WHERE employee_id=NEW.employee_id) BEGIN SELECT raise(ABORT,'Employee already permanent'); END;
+CREATE TRIGGER perm_insert BEFORE INSERT ON permanent WHEN EXISTS(SELECT 1 FROM temporary WHERE employee_id=NEW.employee_id) BEGIN SELECT raise(ABORT,'Employee already temporary'); END;
+CREATE TRIGGER temp_update BEFORE UPDATE OF employee_id ON temporary WHEN EXISTS(SELECT 1 FROM permanent WHERE employee_id=NEW.employee_id) BEGIN SELECT raise(ABORT,'Employee already permanent'); END;
+CREATE TRIGGER perm_update BEFORE UPDATE OF employee_id ON permanent WHEN EXISTS(SELECT 1 FROM temporary WHERE employee_id=NEW.employee_id) BEGIN SELECT raise(ABORT,'Employee already temporary'); END;
+INSERT INTO temporary SELECT * FROM t1;
+INSERT INTO permanent SELECT * FROM t2;
+SELECT employee_id,department,'Temporary' FROM temporary UNION ALL SELECT employee_id,department,'Permanent' FROM permanent;

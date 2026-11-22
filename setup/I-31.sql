@@ -1,0 +1,14 @@
+-- I-31: fixture SQLite, dati dalla traccia; date ISO 8601.
+PRAGMA foreign_keys=ON;
+CREATE TABLE t1 ("integer_value" INTEGER);
+INSERT INTO t1 VALUES (3759);
+INSERT INTO t1 VALUES (3760);
+INSERT INTO t1 VALUES (3761);
+INSERT INTO t1 VALUES (3762);
+INSERT INTO t1 VALUES (3763);
+CREATE TABLE t2 ("name" TEXT, "salary" INTEGER);
+INSERT INTO t2 VALUES ('Carl Friedrich Gauss', 250000);
+INSERT INTO t2 VALUES ('Evariste Galois', 250000);
+INSERT INTO t2 VALUES ('Pierre-Simon Laplace', 150000);
+INSERT INTO t2 VALUES ('Sophie Germain', 150000);
+INSERT INTO t2 VALUES ('Leonhard Euler', 100000);

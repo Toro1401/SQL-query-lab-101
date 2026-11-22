@@ -1,0 +1,8 @@
+-- I-19: fixture SQLite, dati dalla traccia; date ISO 8601.
+PRAGMA foreign_keys=ON;
+CREATE TABLE t1 ("start_date" TEXT, "end_date" TEXT);
+INSERT INTO t1 VALUES ('2018-01-01', '2018-01-05');
+INSERT INTO t1 VALUES ('2018-01-03', '2018-01-09');
+INSERT INTO t1 VALUES ('2018-01-10', '2018-01-11');
+INSERT INTO t1 VALUES ('2018-01-12', '2018-01-16');
+INSERT INTO t1 VALUES ('2018-01-15', '2018-01-19');

@@ -1,0 +1,12 @@
+-- I-28: fixture SQLite, dati dalla traccia; date ISO 8601.
+PRAGMA foreign_keys=ON;
+CREATE TABLE t1 ("row_number" INTEGER, "test_case" TEXT);
+INSERT INTO t1 VALUES (1, 'Alpha');
+INSERT INTO t1 VALUES (2, NULL);
+INSERT INTO t1 VALUES (3, NULL);
+INSERT INTO t1 VALUES (4, NULL);
+INSERT INTO t1 VALUES (5, 'Bravo');
+INSERT INTO t1 VALUES (6, NULL);
+INSERT INTO t1 VALUES (7, 'Charlie');
+INSERT INTO t1 VALUES (8, NULL);
+INSERT INTO t1 VALUES (9, NULL);
