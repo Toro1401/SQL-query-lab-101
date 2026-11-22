@@ -1,4 +1,4 @@
--- I-67: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-67: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("student" TEXT, "birthday" TEXT);
 INSERT INTO t1 VALUES ('Susan', '2015-04-15');

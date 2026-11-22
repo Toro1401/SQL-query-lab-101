@@ -1,4 +1,4 @@
--- I-47: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-47: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("schedule_id" TEXT, "start_time" TEXT, "end_time" TEXT);
 INSERT INTO t1 VALUES ('A', '2021-10-01 10:00', '2021-10-01 15:00');

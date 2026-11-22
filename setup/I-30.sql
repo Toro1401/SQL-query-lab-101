@@ -1,2 +1,2 @@
--- I-30: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-30: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;

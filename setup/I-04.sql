@@ -1,4 +1,4 @@
--- I-04: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-04: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("customer_id" INTEGER, "order_id" INTEGER, "delivery_state" TEXT, "amount" INTEGER);
 INSERT INTO t1 VALUES (1001, 1, 'CA', 340);

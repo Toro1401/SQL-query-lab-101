@@ -1,4 +1,4 @@
--- I-75: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-75: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("box_id" TEXT, "length" INTEGER, "width" INTEGER, "height" INTEGER);
 INSERT INTO t1 VALUES ('A', 10, 25, 15);

@@ -1,4 +1,4 @@
--- I-38: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-38: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("region" TEXT, "distributor" TEXT, "sales" INTEGER);
 INSERT INTO t1 VALUES ('North', 'ACE', 10);

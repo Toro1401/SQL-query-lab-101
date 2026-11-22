@@ -1,4 +1,4 @@
--- I-62: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-62: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("vehicle_id" INTEGER, "type" TEXT, "model" TEXT, "price" INTEGER);
 INSERT INTO t1 VALUES (1, 'Car', 'Rolls-Royce Phantom', 460000);

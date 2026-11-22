@@ -1,4 +1,4 @@
--- I-20: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-20: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("product_id" INTEGER, "effective_date" TEXT, "unit_price" REAL);
 INSERT INTO t1 VALUES (1001, '2018-01-01', 1.99);

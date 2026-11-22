@@ -1,39 +1,39 @@
 # SQL Practice Workbook
 
-101 esercizi SQL compilati: 78 nella Parte I e 23 nella Parte II. Ogni scheda contiene query, metodologia, ipotesi, risultato misurato e un caso aggiuntivo eseguito.
+The workbook contains 101 SQL exercises, with 78 in Part I and 23 in Part II. Each exercise page shows the query, the reasoning behind it, the measured result, and an additional test case.
 
-[Apri il quaderno](WORKBOOK.md) · [Requisiti](PRD.md) · [Verifiche e correzioni](VERIFICATION.md)
+[Browse the exercises](WORKBOOK.md) · [Requirements](PRD.md) · [Verification and source corrections](VERIFICATION.md)
 
-## Riprodurre le verifiche
+## Run the checks
 
-Ambiente effettivamente utilizzato: **Node.js v24.16.0**, modulo integrato `node:sqlite`, **SQLite 3.53.0**. Non occorrono npm, dipendenze esterne, rete o un server database. Le soluzioni sono adattamenti SQLite; non sono state eseguite su SQL Server.
+The reference run used **Node.js v24.16.0**, its built-in `node:sqlite` module, and **SQLite 3.53.0**. You can run the checks offline without npm, external dependencies, or a database server. The queries were adapted to SQLite and have not been run on SQL Server.
 
 ```powershell
 node verify.cjs
 node verify.cjs I-13
 ```
 
-Il runner apre un database in memoria nuovo per ciascun esercizio e per ciascuna mutazione dei dati. Esegue i file `setup/<ID>.sql` e `sql/<ID>.sql`, confronta tutti i risultati e termina con codice diverso da zero se un controllo fallisce. Il primo comando ripete i 101 esercizi; il secondo ne seleziona uno. Sono stati osservati **101/101 PASS** su campione base e controllo aggiuntivo.
+The first command checks all 101 exercises. The second runs I-13 on its own. For each exercise, the runner opens a fresh in-memory database, loads `setup/<ID>.sql`, and runs `sql/<ID>.sql`. It uses a separate database when it changes the input for an additional case. A failing check produces a nonzero exit code. All 101 exercises passed the base and additional checks in the reference run.
 
-I risultati completi, inclusi quelli dei casi aggiuntivi, sono in [verification/results.json](verification/results.json), con versione del motore e timestamp dell'esecuzione. Una verifica singola salva un report separato. I 7.200 abbinamenti dei veicoli sono presenti integralmente nel report; il quaderno ne mostra un campione.
+[verification/results.json](verification/results.json) contains the full results, including the additional cases, the engine version, and the execution timestamp. A single exercise gets a separate report. The report includes all 7,200 vehicle arrangements. The exercise page shows a sample.
 
-Le query possono essere eseguite in un editor SQLite caricando prima il rispettivo setup. I-30 richiede `forbid_star()`, I-51 richiede `sha256()` e `crc32()`, le simulazioni richiedono `rnd()` e la passeggiata anche `bitcount()`: queste funzioni sono registrate dal runner. `rnd()` usa un mixer deterministico a 32 bit, senza finalità crittografiche. I semi e gli altri parametri sono nei setup degli esercizi.
+You can also load the setup and run most queries in a SQLite editor. The runner registers `forbid_star()` for I-30, `sha256()` and `crc32()` for I-51, and `rnd()` for simulations. The random walk also requires `bitcount()`. The deterministic 32-bit mixer behind `rnd()` is for simulations. The setup files contain the seeds and other parameters.
 
-## Organizzazione e significato di Verified
+## Project files
 
-- [WORKBOOK.md](WORKBOOK.md): schede con gli stessi ID e collegamenti della versione iniziale.
-- [setup/](setup/): dati di esempio ricreati in SQLite, date normalizzate ISO 8601; `t1`, `t2`, `t3` seguono l'ordine delle tabelle nella traccia.
-- [sql/](sql/): query effettivamente eseguite, identiche a quelle mostrate nel quaderno.
-- [fixtures.json](fixtures.json): fixture e risultati attesi ricavati dalle tracce; le eccezioni documentate sono esplicite nel runner.
-- [verify.cjs](verify.cjs), [checks.cjs](checks.cjs), [checks-II.cjs](checks-II.cjs): confronti completi, casi limite e oracoli indipendenti.
+- [WORKBOOK.md](WORKBOOK.md) indexes the individual exercise pages by their original IDs.
+- [setup/](setup/) recreates the example data in SQLite, with dates in ISO 8601 format. Tables `t1`, `t2`, and `t3` follow the order given in the source.
+- [sql/](sql/) contains the queries that the runner executes and the exercise pages display.
+- [fixtures.json](fixtures.json) holds the fixtures and expected results. The runner records exceptions to the source output.
+- [verify.cjs](verify.cjs), [checks.cjs](checks.cjs), and [checks-II.cjs](checks-II.cjs) compare results, exercise edge cases, and run independent checks.
 
-`Verified` riguarda i dati e i casi documentati, con le ipotesi dichiarate. Le simulazioni sono esperimenti riproducibili, non dimostrazioni matematiche. I-30 e I-51 sono adattamenti di esercizi con particolarità SQL Server; in particolare CRC32 non riproduce l'algoritmo proprietario `CHECKSUM`.
+`Verified` applies to the documented fixtures and assumptions. The seeded simulations can be reproduced and compared with theoretical probabilities. I-30 and I-51 adapt SQL Server features to SQLite. In particular, CRC32 differs from SQL Server's `CHECKSUM` algorithm.
 
-Le soluzioni sono state redatte dall'assistente su richiesta dell'utente, senza consultare le soluzioni SQL ufficiali. Non rappresentano esercizi svolti autonomamente dall'autore del portfolio. Prima di presentarli in un colloquio, riprodurre e comprendere ogni query.
+The solutions were drafted with an assistant at the author's request, without consulting the official SQL solutions. The workbook documents assisted work. Reproduce the queries and make sure you can explain them before using them in an interview.
 
-## Fonte e attribuzione
+## Source and attribution
 
-Tracce e dati di esempio: **Scott Peters, Advanced SQL Puzzles**, [revisione 4fe0cac6e23f6af967bca0a46e364f9b8534eec3](https://github.com/smpetersgithub/AdvancedSQLPuzzles/blob/4fe0cac6e23f6af967bca0a46e364f9b8534eec3/Advanced%20SQL%20Puzzles/Advanced%20SQL%20Puzzles%20Markdown.md). I link alle singole tracce e ai setup SQL Server sono conservati nelle schede. La titolarità dei materiali originali resta ai rispettivi autori.
+The prompts and example data come from **Scott Peters, Advanced SQL Puzzles**, [revision 4fe0cac6e23f6af967bca0a46e364f9b8534eec3](https://github.com/smpetersgithub/AdvancedSQLPuzzles/blob/4fe0cac6e23f6af967bca0a46e364f9b8534eec3/Advanced%20SQL%20Puzzles/Advanced%20SQL%20Puzzles%20Markdown.md). Exercise pages link to their source prompts and to the SQL Server setup where available. The original material remains the work of its respective authors.
 
 ## GitHub About description
 

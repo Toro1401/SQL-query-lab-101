@@ -1,4 +1,4 @@
--- I-12: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-12: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("workflow" TEXT, "execution_date" TEXT);
 INSERT INTO t1 VALUES ('Alpha', '2018-06-01');

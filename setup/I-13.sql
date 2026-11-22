@@ -1,4 +1,4 @@
--- I-13: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-13: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("date" TEXT, "quantity_adjustment" INTEGER);
 INSERT INTO t1 VALUES ('2018-07-01', 100);

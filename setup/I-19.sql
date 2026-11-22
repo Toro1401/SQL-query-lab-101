@@ -1,4 +1,4 @@
--- I-19: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-19: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("start_date" TEXT, "end_date" TEXT);
 INSERT INTO t1 VALUES ('2018-01-01', '2018-01-05');

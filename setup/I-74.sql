@@ -1,4 +1,4 @@
--- I-74: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-74: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("game_id" INTEGER, "bowler" TEXT, "score" INTEGER);
 INSERT INTO t1 VALUES (1, 'John', 167);

@@ -1,4 +1,4 @@
--- I-35: fixture SQLite, dati dalla traccia; date ISO 8601.
+-- I-35: SQLite fixture based on the prompt. Dates use ISO 8601.
 PRAGMA foreign_keys=ON;
 CREATE TABLE t1 ("invoice_id" INTEGER, "sales_rep_id" INTEGER, "amount" INTEGER, "sales_type" TEXT);
 INSERT INTO t1 VALUES (1, 1001, 13454, 'International');

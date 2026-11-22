@@ -1,57 +1,57 @@
-# Verifica delle 101 soluzioni
+# Verification of the 101 solutions
 
-Esecuzione di riferimento: 21 novembre 2026, Node.js v24.16.0 e SQLite 3.53.0. **101/101 esercizi PASS**, ciascuno con controllo base e almeno un controllo aggiuntivo. I risultati e il timestamp effettivo si trovano in [verification/results.json](verification/results.json).
+The reference run on November 21, 2026 used Node.js v24.16.0 and SQLite 3.53.0. **All 101 exercises passed** the base case and at least one additional check. [verification/results.json](verification/results.json) records the results and the execution timestamp.
 
 ```powershell
 node verify.cjs
 ```
 
-Il runner legge direttamente i file SQL e ne controlla la corrispondenza con il quaderno. Nessuna query viene dichiarata Verified sulla sola base della lettura. Ogni caso gira in memoria su dati separati; le cancellazioni e i trigger non toccano database dell'utente.
+The runner reads the SQL files and checks that each query matches the one on its exercise page. Each case runs on separate in-memory data, so deletes and triggers are isolated from the user's databases.
 
-## Criteri
+## What the runner checks
 
-Quando la traccia contiene un output tabellare, il confronto tratta le righe come un multinsieme: stesso numero di righe, stessi valori e stessi duplicati. L'ordine è confrontato esplicitamente in I-40, dove costituisce il requisito; negli altri esercizi eventuali ordinamenti di presentazione non cambiano l'insieme atteso. Numeri reali normalizzati a sei decimali per il confronto; date trasformate in ISO 8601, celle vuote rappresentate da NULL, codici con zeri iniziali mantenuti come testo.
+When the prompt gives a table of expected results, the runner compares the values and the number of occurrences of each row. It also checks row order in I-40, where sorting is the requirement. For the other exercises, presentation order does not affect the comparison. The checks normalize real numbers to six decimal places. The fixtures use ISO 8601 dates, represent empty cells as NULL, and store codes with leading zeros as text.
 
-I-10 usa valori statistici calcolati indipendentemente dalla query, I-31 confronta anche le tre formulazioni e il bonus stipendi, I-46 confronta entrambe le formulazioni. DDL e trigger sono verificati sia su operazioni valide sia su operazioni che devono fallire. Le invarianti aggiuntive verificano risultati concreti delle mutazioni descritte nelle schede: ad esempio I-13 confronta l'intera sequenza di saldi con due movimenti nella stessa data.
+I-10 uses statistics calculated independently. I-31 checks three formulations and the salary bonus. I-46 checks both formulations. The DDL and trigger tests cover operations that should succeed and operations that should fail. The additional cases check concrete results after changing the input. For example, I-13 checks the full sequence of balances when two movements share a date.
 
-Per i problemi senza output fissato si usano valori noti, conteggi combinatori e algoritmi JavaScript indipendenti. Questi ultimi condividono solo il generatore pseudocasuale per riprodurre le stesse estrazioni. Le simulazioni SQL e JS devono coincidere nei risultati misurati; sono controllati anche limiti di arresto e ampie tolleranze rispetto alla teoria. I semi fissati rendono il test stabile, senza fingere che un singolo esperimento dimostri una probabilità.
+For problems without a fixed output, the runner uses known values, combinatorial counts, or independent JavaScript algorithms. SQL and JavaScript share the pseudorandom generator so both implementations receive the same draws. The checks compare their measured results, enforce stopping limits, and allow for a margin around theoretical values. Fixed seeds make the runs reproducible.
 
-## Correzioni e interpretazioni della fonte
+## Source corrections and interpretations
 
-| Esercizio | Differenza documentata |
+| Exercise | Documented difference |
 |---|---|
-| I-26 | La somma 2016 è 159521 + 251696 + 111894 = **523111**. Il valore atteso 411217 omette la terza vendita. |
-| II-10 | I 16 posti occupati comprendono **7 pari e 9 dispari**, non 8 e 9. I-18 riporta il conteggio corretto per gli stessi dati. |
-| II-22 | L'ordine 1 ammette anche `(1,5),(2,6),(3,4)` e `(1,6),(2,5),(3,4)`: tre gruppi disgiunti, ognuno con costo almeno 10 e al massimo due righe. La tabella della fonte omette queste due soluzioni. Ordine 5: un gruppo per soluzione, non due come dice il commento. |
-| I-12, I-68, I-70 | Medie troncate a intero per riprodurre la presentazione della fonte; non arrotondate. I-10 conserva la precisione della media 342/11. |
-| I-21 | TX atteso è coerente con la media delle medie mensili per cliente >100 per tutti i clienti dello stato. Non è coerente con il requisito più forte “ogni mese >100”: alcuni mesi di 1001 sono esattamente a 100. Mesi senza ordini esclusi. |
-| I-45 | Si restituisce la versione precedente il cui intervallo invade l'inizio di una successiva; non tutti i membri di ogni coppia sovrapposta. |
-| I-48 | Anno di riferimento **2021** esplicito per riprodurre i dati della fonte, indipendente dalla data corrente. |
-| I-53 | Ordinamento dei gruppi per il massimo lessicografico dei partner, per riprodurre i GroupID mostrati. |
-| I-62 | Gli esempi impongono differenza auto-barca **almeno** 200000, non esattamente 200000. |
-| II-04 | n=4 per confrontare le due permutazioni attese; n=10 è solo un esempio nel testo. |
-| II-12 | La successione non ha un termine nella traccia: si sceglie limite 110, dichiarato nel setup. |
-| II-13, II-14 | Parametri dichiarati: C(5,2) e Josephus n=7, passo=3. Non viene affermata una verifica esaustiva di ogni parametro. |
-| II-17 | Un 6 attiva un rilancio di penalità. Quel lancio sottrae il proprio valore; un altro 6 mantiene la modalità penalità. Ogni lancio fisico è contato e il punteggio non scende sotto zero. |
-| II-23 | La traccia chiede le mosse legali successive del cavallo, non un tour che visiti tutta la scacchiera. |
+| I-26 | The 2016 total is 159521 + 251696 + 111894 = **523111**. The expected value of 411217 omits the third sale. |
+| II-10 | The 16 occupied seats include **7 even and 9 odd**. The source quotes 8 even seats. I-18 gives the correct counts for the same data. |
+| II-22 | Order 1 also allows `(1,5),(2,6),(3,4)` and `(1,6),(2,5),(3,4)`. Each solution has three disjoint groups, with a cost of at least 10 and at most two rows per group. The source table omits both solutions. For order 5, each solution gives one group, while the source comment says two. |
+| I-12, I-68, I-70 | The queries truncate averages to integers to match the source. I-10 retains the precision of the mean 342/11. |
+| I-21 | The expected TX result agrees with requiring every customer's average of monthly averages to exceed 100. Some months for customer 1001 average exactly 100, so requiring each month to exceed 100 would give a different result. Months without orders are excluded. |
+| I-45 | The output identifies the earlier version whose interval overlaps the start of a later one. |
+| I-48 | The reference year is fixed at **2021** to reproduce the source data. |
+| I-53 | The query orders groups by the lexicographically larger partner to match the displayed GroupID values. |
+| I-62 | The examples require a difference of **at least** 200000 between the price of the car and the boat. |
+| II-04 | The fixture uses n=4 to match the two expected permutations. The prompt mentions n=10 as an example. |
+| II-12 | The prompt gives no endpoint. The setup specifies a limit of 110. |
+| II-13, II-14 | The tests cover C(5,2) and the Josephus problem with n=7 and a step of 3. They cover the stated parameters. |
+| II-17 | A 6 triggers a penalty roll. Each penalty roll subtracts its face value, and another 6 extends the penalty. Every physical roll counts, and the score stays at or above zero. |
+| II-23 | The prompt asks for the knight's next legal moves. A full tour of the board is outside its scope. |
 
-## Adattamenti di motore
+## SQLite adaptations
 
-**I-30:** vista SQLite con colonna sentinella `forbid_star()` che fallisce quando selezionata. La lettura delle due colonne esplicite riesce; `SELECT *` fallisce. È un equivalente dimostrativo del comportamento richiesto, non una migrazione letterale dello schema SQL Server o un controllo di sicurezza.
+**I-30** uses a SQLite view with a `forbid_star()` sentinel column. Reading the two explicit columns succeeds. `SELECT *` fails because it reads the sentinel. This demonstrates the requested behavior in SQLite. The SQL Server schema and access controls are outside the scope of the exercise.
 
-**I-51:** SHA-256 e CRC32 registrati dal runner su serializzazione JSON canonica della chiave naturale. SHA-256 corrisponde all'algoritmo, ma encoding e serializzazione dichiarati ne determinano i byte. CRC32 è un checksum dimostrativo e **non** l'algoritmo proprietario SQL Server `CHECKSUM`. Non sono state testate `HASHBYTES`/`CHECKSUM` su SQL Server. Collisioni restano possibili: mantenere un vincolo UNIQUE sulla chiave naturale; non usare CRC32 come garanzia di unicità.
+**I-51** registers SHA-256 and CRC32 in the runner and applies them to the canonical JSON serialization of the natural key. The encoding and serialization determine the bytes supplied to SHA-256. CRC32 differs from SQL Server's proprietary `CHECKSUM`. The tests do not exercise `HASHBYTES` or `CHECKSUM` on SQL Server. Collisions are possible, so enforce uniqueness with a UNIQUE constraint on the natural key.
 
-Le fixture ricreano tabelle e dati delle tracce con nomi semplificati; non eseguono i file T-SQL originali. Le date sono ISO e le chiavi di ordinamento sono esplicite. I-13 usa rowid per distinguere i movimenti della fixture con pari data: su un sistema reale introdurre un MovementID persistente.
+The fixtures recreate the source tables and data with simpler names and ISO dates. The runner executes the SQLite setup and uses explicit ordering keys. I-13 uses rowid to distinguish same-day movements in the fixture. A production table should have a persistent MovementID.
 
-## Risultati delle simulazioni
+## Simulation results
 
-| Esercizio | Osservazione misurata |
+| Exercise | Measured result |
 |---|---|
-| II-16 Monty Hall | 10.000 prove: 3427 vittorie restando, **6573 cambiando**, zero aperture non valide. |
-| II-17 Dadi | 10.000 partite a 100 punti: **66,0864 lanci medi**, minimo 28, massimo 165, nessuna partita troncata. |
-| II-18 Compleanni | 10.000 gruppi di 23: **5081** con compleanni condivisi, frequenza **0,5081**. |
-| II-19 Passeggiata | 10.000 prove concluse, zero vittorie host. Conteggi eleggibili 1..7: 1478, 1410, 1362, 1454, 1454, 1377, 1465. |
-| II-20 Markov | 100.000 giorni: **62.680 piovosi**, frequenza **0,6268**; stazionaria teorica 0,625. |
-| II-21 Prigionieri | 10.000 permutazioni: **3116 successi**, frequenza **0,3116**; teoria circa 0,3118. |
+| II-16 Monty Hall | 10,000 trials. 3,427 wins by staying, **6,573 by switching**, and no invalid openings. |
+| II-17 Dice | 10,000 games with a target of 100 points. **66.0864 rolls on average**, with a minimum of 28 and a maximum of 165. Every game finished. |
+| II-18 Birthdays | 10,000 groups of 23. **5,081** shared a birthday, for a frequency of **0.5081**. |
+| II-19 Random walk | 10,000 completed trials and zero wins by the host. Win counts for eligible participants 1 through 7 were 1478, 1410, 1362, 1454, 1454, 1377, and 1465. |
+| II-20 Markov chain | 100,000 days, of which **62,680** were rainy. The observed fraction was **0.6268**, compared with a theoretical stationary fraction of 0.625. |
+| II-21 Prisoners | 10,000 permutations, with **3,116** successes. The observed frequency was **0.3116**, compared with a theoretical probability of about 0.3118. |
 
-Questo report descrive verifiche funzionali sulle fixture documentate. Non comprende benchmark di prestazioni su grandi database, test su SQL Server o una prova formale di correttezza generale.
+The results cover functional checks on the documented fixtures. Large-database performance, SQL Server behavior, and general proofs of correctness are outside their scope.

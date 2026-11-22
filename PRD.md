@@ -1,29 +1,29 @@
 # SQL Practice Workbook · PRD
 
-Il progetto raccoglie 101 esercizi per studiare SQL e rendere riproducibili le soluzioni. Un lettore deve poter identificare la traccia, ricreare i dati, eseguire la query e controllarne metodo e risultati.
+The workbook gives readers 101 exercises to study and reproduce in SQL. For each one, readers can find the prompt, recreate the data, run the query, and check the reasoning and results.
 
-## Versione compilata
+## Current scope
 
-- 78 esercizi nella Parte I e 23 nella Parte II, mantenendo ID e riferimenti della versione iniziale.
-- Una soluzione SQLite, metodologia e ipotesi esplicite per ogni scheda.
-- Fixture locali e query eseguibili, senza dipendenze di rete.
-- Stato Verified solo dopo esecuzione del campione e di un caso aggiuntivo o controllo negativo.
-- Report con risultati integrali, versione database e timestamp, riproducibile con `node verify.cjs`.
-- Correzioni motivate quando l'output della fonte contraddice dati o regole.
+- Part I has 78 exercises and Part II has 23. The pages retain their original IDs and source links.
+- Each page includes a SQLite solution and states its method and assumptions.
+- The setups and queries run offline.
+- An exercise earns the status Verified after the base example and an additional case or negative check pass.
+- Run `node verify.cjs` to reproduce the report with full results, engine version, and execution timestamp.
+- When an expected result conflicts with the source data or rules, explain the correction.
 
-## Criteri di accettazione
+## Acceptance criteria
 
-1. Ogni esercizio identifica ID, traccia, SQLite 3.53.0 e dati necessari.
-2. I file setup ricreano i dati in un database isolato; i file SQL coincidono con le query nel quaderno.
-3. Tutte le righe sono confrontate con i risultati attesi, incluse le molteplicità. DDL e problemi aperti hanno controlli espliciti.
-4. Ogni scheda spiega significato della riga, ordine dei dati, ipotesi e almeno un caso aggiuntivo eseguito.
-5. Le simulazioni hanno parametri e semi riproducibili, confronto con probabilità teoriche quando pertinente e verifica mediante algoritmo indipendente.
-6. Stato corrente misurato: 101/101 PASS nell'ambiente indicato; adattamenti I-30/I-51 e differenze dalla fonte dichiarati.
+1. Every page identifies its exercise, source prompt, SQLite 3.53.0, and required input.
+2. The setup recreates the data in an isolated database. The SQL file matches the query on the exercise page.
+3. The checks compare every expected row, including duplicate occurrences. DDL and open-ended exercises have explicit checks.
+4. Each page explains what a row represents, which ordering and assumptions matter, and what happened in at least one additional test.
+5. Simulations state their parameters and seeds, compare with theory where applicable, and use an independent algorithm to verify the result.
+6. The documented environment reproduces 101 passing exercises. The pages identify the I-30 and I-51 adaptations and any differences from the source.
 
-## Limiti e provenienza
+## Limits and provenance
 
-Soluzioni redatte dall'assistente, senza consultare le soluzioni ufficiali. Verified non equivale a una prova su ogni input né a una certificazione SQL Server. I riferimenti alle tracce restano fissati alla revisione originaria. Il quaderno e i file del progetto contengono quanto serve per ripetere le verifiche.
+The solutions were drafted with an assistant without consulting the official solutions. The checks cover the documented fixtures in SQLite. The source references point to a fixed revision, and the repository contains the files needed to repeat the checks.
 
-## Sviluppi futuri
+## Future work
 
-Portare le query su SQL Server con verifiche native delle funzioni specifiche; ampliare i casi limite; selezionare esercizi rappresentativi dopo revisione e comprensione personale.
+Port the queries to SQL Server and test its native features. Add more edge cases. Select representative exercises after reviewing and reproducing the solutions independently.

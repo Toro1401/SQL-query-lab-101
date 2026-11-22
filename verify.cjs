@@ -22,19 +22,19 @@ const overrides={
 };
 overrides['II-22']=[fixtures['II-22'].expected[0].concat([[1,3,'(1,5),(2,6),(3,4)'],[1,3,'(1,6),(2,5),(3,4)']])];
 const notes={
- 'I-26':'Correzione fonte: 2016 = 159521 + 251696 + 111894 = 523111, non 411217 (che omette 111894).',
- 'II-10':'Correzione fonte: 7 posti occupati pari, non 8; 9 dispari, totale 16. Coerente con I-18.',
- 'II-22':'La tabella attesa omette due soluzioni ottime valide per ordine 1: (1,5),(2,6),(3,4) e (1,6),(2,5),(3,4). Ogni gruppo ha al massimo due elementi, costo >=10, senza sovrapposizioni e sempre tre gruppi. Sono incluse nel confronto corretto. Il commento su ordine 5 dice due gruppi, ma ciascuna soluzione ne ha uno.'
+ 'I-26':"Source correction: 159521 + 251696 + 111894 = 523111 for 2016. The expected value of 411217 omits 111894.",
+ 'II-10':"Source correction: the 16 occupied seats include 7 even and 9 odd. The source lists 8 even seats. I-18 gives the same corrected count.",
+ 'II-22':"The expected table omits two valid optimal solutions for order 1: (1,5),(2,6),(3,4) and (1,6),(2,5),(3,4). Both have three disjoint groups, with a cost of at least 10 and at most two items per group. The corrected comparison includes both. For order 5, each solution has one group, while the source comment says two."
 };
 let report=[];
 const selected=process.argv[2];
 if(selected&&!S[selected])throw new Error('Unknown exercise: '+selected);
-const workbook=fs.readFileSync('WORKBOOK.md','utf8').replaceAll('\r\n','\n');
 for(const [id,s] of Object.entries(S)){
  if(selected&&selected!==id)continue;
- const entry=workbook.split('### '+id+' · ')[1]?.split(/\n### |\n## /)[0];
+ const part='part-'+id.split('-')[0].toLowerCase();
+ const entry=fs.readFileSync(path.join(__dirname,'exercises',part,id+'.md'),'utf8').replaceAll('\r\n','\n');
  const embedded=entry?.match(/```sql\n([\s\S]*?)\n```/)?.[1];
- assert.equal(embedded?.trim(),s.sql.trim(),'Workbook/SQL mismatch: '+id);
+ assert.equal(embedded?.trim(),s.sql.trim(),'Exercise page/SQL mismatch: '+id);
  const f=fixtures[id];if(!f)throw new Error('fixture missing '+id);
  let db=make(f),rec={id,status:'FAIL'};
  try{
